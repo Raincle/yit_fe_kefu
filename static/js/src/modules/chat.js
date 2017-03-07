@@ -45,7 +45,7 @@
 		//chat window object
 		return {
 			init: function () {
-				
+
 				this.channel = easemobim.channel.call(this, config);
 
 				//create & init connection
@@ -375,10 +375,10 @@
 										}, 'txt');
 									} else {
 										//robert list greeting
-										me.receiveMsg({ 
+										me.receiveMsg({
 											ext: greetingObj.ext,
 											noprompt: true
-										});	
+										});
 									}
 								} catch ( e ) {}
 								break;
@@ -626,7 +626,7 @@
 
 				if (!me.ePrompt) me.ePrompt = document.querySelector('.em-widget-error-prompt');
 				if (!me.ePromptContent) me.ePromptContent = me.ePrompt.querySelector('span');
-				
+
 				me.ePromptContent.innerHTML = msg;
 				utils.removeClass(me.ePrompt, 'hide');
 				isAlive || setTimeout(function () {
@@ -710,11 +710,11 @@
 				if ( !isHistory ) {
 					if ( to ) {
 						if ( !this.msgTimeSpan[to] || (date - this.msgTimeSpan[to] > 60000) ) {//间隔大于1min  show
-							chatWrapper.appendChild(dom); 
+							chatWrapper.appendChild(dom);
 						}
 						this.resetSpan(to);
 					} else {
-						chatWrapper.appendChild(dom); 
+						chatWrapper.appendChild(dom);
 					}
 				} else {
 					utils.insertBefore(chatWrapper, dom, chatWrapper.getElementsByTagName('div')[0]);
@@ -800,7 +800,7 @@
 				});
 
 				if (config.dragenable && !utils.isTop) {
-					
+
 					easemobim.dragBar.style.cursor = 'move';
 
 					utils.on(easemobim.dragBar, 'mousedown', function ( ev ) {
@@ -975,13 +975,22 @@
 							}
 						}
 					);
+
+					// 返回上一页
+					utils.on(
+						document.querySelector('.em-widgetHeader-back'),
+						utils.click,
+						function(){
+							window.history.go(-1);
+						}
+					);
 				}
 
 				// 发送文件
 				utils.on(doms.fileInput, 'change', function () {
 					var fileInput = doms.fileInput;
 					var filesize = utils.getDataByPath(fileInput, 'files.0.size');
-					
+
 					if(!fileInput.value){
 						// 未选择文件
 					}
@@ -990,7 +999,7 @@
 					}
 					else{
 						me.errorPrompt('文件大小不能超过10MB');
-					}	
+					}
 				});
 
 				// 发送图片
@@ -1036,7 +1045,7 @@
 						doms.fileInput.click();
 					}
 				});
-				
+
 				utils.on(easemobim.sendImgBtn, 'click', function () {
 					if ( !me.readyHandled ) {
 						me.errorPrompt('正在连接中...');
@@ -1109,13 +1118,13 @@
 
 				var res = robertToHubman ? this.onlineHumanAgentCount < 1 : this.agentCount < 1;
 				if ( res ) {//显示无坐席在线
-					
+
 					//每次激活只显示一次
 					if ( !this.noteShow ) {
 						this.noteShow = true;
 						this.appendEventMsg(_const.eventMessageText.NOTE);
 					}
-					
+
 				}
 
 				if ( action === 'reply' && info ) {

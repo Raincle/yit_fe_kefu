@@ -1250,7 +1250,7 @@ easemobim.titleSlide = function () {
 				utils.setStore(prefix + 'ext', JSON.stringify(_config.extMsg));
 			}
 
-			//store visitor info 
+			//store visitor info
 			if ( _config.visitor ) {
 				utils.setStore(prefix + 'visitor', JSON.stringify(_config.visitor));
 			}
@@ -1268,7 +1268,7 @@ easemobim.titleSlide = function () {
 			}
 
 			a.setAttribute('href', iframe.url);
-			a.setAttribute('target', '_blank');
+			// a.setAttribute('target', '_blank');
 
 		}
 	};

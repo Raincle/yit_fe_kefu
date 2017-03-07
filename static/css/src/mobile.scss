@@ -57,6 +57,7 @@
 		}
 	}
 	.em-widgetHeader-keyboard {
+		display: none;
 		position: absolute;
 		right: 9px;
 		top: 11px;
@@ -131,5 +132,5 @@
 		line-height: 32px;
 	}
 }
-@media 
+@media
 (-webkit-min-device-pixel-ratio: 2) {}
