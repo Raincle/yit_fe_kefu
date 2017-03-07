@@ -7,6 +7,8 @@
 	url('font/iconfont.svg?v=<%=WEBIM_PLUGIN_VERSION%>#easemobim') format('svg'); /* iOS 4.1- */
 }
 
+
+.icon-back:before { content: "\43"; }
 .icon-camera:before { content: "\63"; }
 .icon-change:before { content: "\64"; }
 .icon-minimize:before { content: "\65"; }
@@ -16,7 +18,7 @@
 .icon-close:before { content: "\43"; }
 .icon-face:before { content: "\44"; }
 .icon-easemob:before { content: "\45"; }
-.icon-min:before { content: "\46"; }
+// .icon-min:before { content: "\46"; }
 .icon-good:before { content: "\47"; }
 // fake: IE8 满意度评价会有兼容问题，需替换字符
 .icon-star:before { content: "\48"; }
@@ -25,7 +27,7 @@
 .icon-corner-right:before { content: "\4a"; }
 .icon-picture:before { content: "\4c"; }
 .icon-M:before { content: "\4d"; }
-.icon-bell:before { content: "\78"; }
+// .icon-bell:before { content: "\78"; }
 .icon-slience:before { content: "\58"; }
 .icon-sound:before { content: "\67"; }
 .icon-keyboard-down:before { content: "\4f"; }
@@ -47,6 +49,8 @@
 .icon-download:before { content: "\75"}
 
 
+
+.icon-back:before,
 .icon-camera:before,
 .icon-change:before,
 .icon-minimize:before,
@@ -56,7 +60,7 @@
 .icon-close:before,
 .icon-face:before,
 .icon-easemob:before,
-.icon-min:before,
+// .icon-min:before,
 .icon-good:before,
 .icon-star:before,
 .icon-broken-pic:before,
@@ -64,7 +68,7 @@
 .icon-corner-right:before,
 .icon-picture:before,
 .icon-M:before,
-.icon-bell:before,
+// .icon-bell:before,
 .icon-slience:before,
 .icon-sound:before,
 .icon-keyboard-down:before,

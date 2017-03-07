@@ -78,7 +78,26 @@
 	color: #efefef;
 	color: rgba(255, 255, 255, .7);
 }
+.em-widgetHeader-back {
+	position: absolute;
+	right: 9px;
+	top: 10px;
+	width: 21px;
+	height: 21px;
+
+	&:before {
+		position: absolute;
+		left: -5px;
+		top: -4px;
+		text-align: center;
+		color: white;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
 .em-widgetHeader-min {
+	display: none;
 	position: absolute;
 	right: 9px;
 	top: 10px;
@@ -99,6 +118,7 @@
 	}
 }
 .em-widgetHeader-wrapper .em-widgetHeader-audio {
+	display: none;
 	position: absolute;
 	right: 44px;
 	top: 12px;
