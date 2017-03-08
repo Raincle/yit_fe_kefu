@@ -15,6 +15,7 @@
 		agentName: '',
 		appKey: '',
 		domain: '',
+		hideStatus: true,
 		path: '',
 		ticket: true,
 		staticPath: '',
