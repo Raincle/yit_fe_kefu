@@ -17641,7 +17641,7 @@ WebIM.message.txt.prototype.get = function ( isReceive ) {
 	}
 
 	this.value = easemobim.utils.decode(this.value);
-	
+
 	return [
 		!isReceive ? "<div id='" + this.id + "' class='em-widget-right'>" : "<div class='em-widget-left'>",
 			"<div class='em-widget-msg-wrapper'>",
@@ -17660,7 +17660,7 @@ WebIM.message.txt.prototype.get = function ( isReceive ) {
 WebIM.message.img.prototype.get = function ( isReceive ) {
 	return [
 		!isReceive ? "<div id='" + this.id + "' class='em-widget-right'>" : "<div class='em-widget-left'>",
-			"<div class='em-widget-msg-wrapper'>",
+			"<div class='em-widget-msg-wrapper em-widget-msg-img'>",
 				"<i class='" + (!isReceive ? "icon-corner-right" : "icon-corner-left") + "'></i>",
 				this.id ? "<div id='" + this.id + "_failed' class='em-widget-msg-status hide'><span>发送失败</span><i class='icon-circle'><i class='icon-exclamation'></i></i></div>" : "",
 				this.id ? "<div id='" + this.id + "_loading' class='em-widget-msg-loading'>" + easemobim.LOADING + "</div>" : "",
@@ -17737,7 +17737,6 @@ WebIM.message.file.prototype.get = function ( isReceive ) {
 		"</div>"
 	].join('');
 };
-
 
 /**
  * ctrl+v发送截图功能:当前仅支持chrome/firefox/edge
