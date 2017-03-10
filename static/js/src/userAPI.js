@@ -15,6 +15,7 @@
 		agentName: '',
 		appKey: '',
 		domain: '',
+		emgroup: '售前',
 		hideStatus: true,
 		path: '',
 		ticket: false,
