@@ -90,17 +90,16 @@
 		box-sizing: border-box;
 		background-color: white;
 		box-shadow: 0 -1px 0 #e5e5e5;
-		.toolbar {
-			display: none;
-		}
 	}
 	.em-widget-send-disable:after {
 		height: 78px;
 	}
 	.em-widget-textarea {
+		width: calc(100% - 108px);
 		height: 34px;
 		max-height: 88px;
 		bottom: 0;
+		right: 0;
 		margin-top: 4px;
 		margin-bottom: 1px;
 		border-radius: 4px;
@@ -113,6 +112,7 @@
 		font-size: 17px;
 		color: #1a1a1a;
 		box-shadow: 0 1px 3px rgba(0,0,0,.2) inset;
+		float: right;
 	}
 	.em-widget-send {
 		width: 64px;
