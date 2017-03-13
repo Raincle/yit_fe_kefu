@@ -20153,16 +20153,16 @@ easemobim.videoChat = (function(dialog){
 							}
 						}
 					);
-
-					// 返回上一页
-					utils.on(
-						document.querySelector('.em-widgetHeader-back'),
-						utils.click,
-						function(){
-							window.history.go(-1);
-						}
-					);
 				}
+
+				// 返回上一页
+				utils.on(
+					document.querySelector('.em-widgetHeader-back'),
+					utils.click,
+					function(){
+						window.history.go(-1);
+					}
+				);
 
 				// 发送文件
 				utils.on(doms.fileInput, 'change', function () {
@@ -20687,7 +20687,8 @@ easemobim.videoChat = (function(dialog){
 			config.hideKeyboard = utils.convertFalse(utils.query('hideKeyboard'));
 
 			config.appKey = utils.convertFalse(decodeURIComponent(utils.query('appKey')));
-			config.domain = config.domain || '//' + location.host;
+			// config.domain = config.domain || '//' + location.host;
+			config.domain = '//kefu.easemob.com/';
 			config.offDutyWord = decodeURIComponent(utils.query('offDutyWord'));
 			config.language = utils.query('language') || 'zh_CN';
 			config.ticket = utils.query('ticket') === '' ? true : utils.convertFalse(utils.query('ticket')); //true default

@@ -1245,7 +1245,7 @@ easemobim.titleSlide = function () {
 		}
 
 
-		if ( utils.isMobile ) {
+		// if ( utils.isMobile ) {
 			var prefix = (_config.tenantId || '') + (_config.emgroup || '');
 
 			//store ext
@@ -1273,7 +1273,7 @@ easemobim.titleSlide = function () {
 			a.setAttribute('href', iframe.url);
 			// a.setAttribute('target', '_blank');
 
-		}
+		// }
 	};
 
 	//open api1: send custom extend message

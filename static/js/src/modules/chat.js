@@ -975,16 +975,16 @@
 							}
 						}
 					);
-
-					// 返回上一页
-					utils.on(
-						document.querySelector('.em-widgetHeader-back'),
-						utils.click,
-						function(){
-							window.history.go(-1);
-						}
-					);
 				}
+
+				// 返回上一页
+				utils.on(
+					document.querySelector('.em-widgetHeader-back'),
+					utils.click,
+					function(){
+						window.history.go(-1);
+					}
+				);
 
 				// 发送文件
 				utils.on(doms.fileInput, 'change', function () {
