@@ -11,11 +11,10 @@
 
 	var DEFAULT_CONFIG = {
 		tenantId: '',
-		to: '',
+		to: 'kefuchannelimid_674727',
 		agentName: '',
 		appKey: '',
 		domain: '',
-		emgroup: '售前',
 		hideStatus: true,
 		path: '',
 		ticket: false,
