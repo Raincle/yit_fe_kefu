@@ -35,8 +35,7 @@
 			config.hideKeyboard = utils.convertFalse(utils.query('hideKeyboard'));
 
 			config.appKey = utils.convertFalse(decodeURIComponent(utils.query('appKey')));
-			// config.domain = config.domain || '//' + location.host;
-			config.domain = '//kefu.easemob.com/';
+			config.domain = '//kefu.easemob.com';
 			config.offDutyWord = decodeURIComponent(utils.query('offDutyWord'));
 			config.language = utils.query('language') || 'zh_CN';
 			config.ticket = utils.query('ticket') === '' ? true : utils.convertFalse(utils.query('ticket')); //true default
@@ -132,19 +131,12 @@
 
 	function initUI(config, callback) {
 		var iframe = document.getElementById('EasemobKefuWebimIframe');
-		var wechat = /MicroMessenger/.test(navigator.userAgent);
 
 		iframe.src = config.domain + '/webim/transfer.html?v=<%=WEBIM_PLUGIN_VERSION%>';
 		utils.on(iframe, 'load', function() {
 			easemobim.getData = new easemobim.Transfer('EasemobKefuWebimIframe', 'data');
 			callback(config);
 		});
-
-		if (!wechat) {
-			var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
-			backBtn.innerHTML = '进入一条生活馆';
-			backBtn.style.width = '120px';
-		}
 
 		// em-widgetPopBar
 		utils.toggleClass(
