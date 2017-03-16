@@ -31,10 +31,10 @@
    */
 
   var docElement = document.documentElement;
-
+  
 
   var tests = [];
-
+  
 
   /**
    *
@@ -83,7 +83,7 @@
     }
   };
 
-
+  
 
   // Fake some of Object.create so we can force non test results to be non "own" properties.
   var Modernizr = function() {};
@@ -93,10 +93,10 @@
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-
+  
 
   var classes = [];
-
+  
 
   /**
    * is returns a boolean if the typeof an obj is exactly type.
@@ -192,7 +192,7 @@
    */
 
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-
+  
 
   /**
    * createElement is a convenience wrapper around document.createElement. Since we
@@ -320,7 +320,7 @@ Detects support for inline SVG in HTML (not within XHTML).
 
 
   ModernizrProto.hasEvent = hasEvent;
-
+  
 
   /**
    * getBody returns the body of a document, or an element that can stand in for
@@ -479,7 +479,7 @@ Detects support for inline SVG in HTML (not within XHTML).
    */
 
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
-
+  
 /*!
 {
   "name": "onInput Event",
@@ -573,11 +573,11 @@ Detects support for inline SVG in HTML (not within XHTML).
    */
 
   var omPrefixes = 'Moz O ms Webkit';
-
+  
 
   var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
   ModernizrProto._cssomPrefixes = cssomPrefixes;
-
+  
 
   /**
    * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
@@ -644,7 +644,7 @@ Detects support for inline SVG in HTML (not within XHTML).
 
   ModernizrProto.atRule = atRule;
 
-
+  
 
   /**
    * List of JavaScript DOM values used for tests
@@ -666,7 +666,7 @@ Detects support for inline SVG in HTML (not within XHTML).
 
   var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
   ModernizrProto._domPrefixes = domPrefixes;
-
+  
 
 
   /**
@@ -756,7 +756,7 @@ Detects support for inline SVG in HTML (not within XHTML).
     delete modElem.elem;
   });
 
-
+  
 
   var mStyle = {
     style: modElem.elem.style
@@ -768,7 +768,7 @@ Detects support for inline SVG in HTML (not within XHTML).
     delete mStyle.style;
   });
 
-
+  
 
   /**
    * domToCSS takes a camelCase string and converts it to kebab-case
@@ -959,7 +959,7 @@ Detects support for inline SVG in HTML (not within XHTML).
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;
 
-
+  
 
   /**
    * prefixed returns the prefixed or nonprefixed property name variant of your input
@@ -1043,7 +1043,7 @@ Detects support for inline SVG in HTML (not within XHTML).
     }
   };
 
-
+  
 /*!
 {
   "name": "RTC Peer Connection",
@@ -13962,17 +13962,17 @@ WebIM.config = {
 
 	/*
 	 * ! Math.uuid.js (v1.4) http://www.broofa.com mailto:robert@broofa.com
-	 *
+	 * 
 	 * Copyright (c) 2010 Robert Kieffer Dual licensed under the MIT and GPL
 	 * licenses.
 	 */
 
 	/*
 	 * Generate a random uuid.
-	 *
+	 * 
 	 * USAGE: Math.uuid(length, radix) length - the desired number of characters
 	 * radix - the number of allowable values for each character.
-	 *
+	 * 
 	 * EXAMPLES: // No arguments - returns RFC4122, version 4 ID >>> Math.uuid()
 	 * "92329D39-6F5C-4520-ABFC-AAB64544E172" // One argument - returns ID of the
 	 * specified length >>> Math.uuid(15) // 15 character ID (default base=62)
@@ -16469,7 +16469,7 @@ Date.prototype.format = function ( fmt ) {
 			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? o[k] : (('00' + o[k]).substr(('' + o[k]).length)));
 		}
 	}
-	return fmt;
+	return fmt;   
 };
 
 /** PrivateFunction: Array.prototype.indexOf
@@ -16588,7 +16588,7 @@ if (!String.prototype.trim) {
 					for ( var len = targetList.length, i = 0; i < len; i++ ) {
 						if ( targetList[i] == tar || targetList[i] == tar.parentNode ) {
 							fn.apply(targetList[i] == tar ? tar : tar.parentNode, arguments);
-						}
+						}   
 					}
 				}
 			});
@@ -16642,7 +16642,7 @@ if (!String.prototype.trim) {
 				fn.apply(this, arguments);
 				me.remove(target, ev, tempFn);
 			};
-			me.on(target, ev, tempFn, isCapture);
+			me.on(target, ev, tempFn, isCapture);  
 		}
 		// 触发事件，对于ie8只支持原生事件，不支持自定义事件
 		, trigger: function(element, eventName){
@@ -16867,7 +16867,7 @@ if (!String.prototype.trim) {
 				sIdx = ~src.indexOf('//') ? src.indexOf('//') : 0,
 				domain = src.slice(sIdx, src.indexOf('/', sIdx + 2)),
 				arr = src.slice(idx+1).split('&');
-
+			
 			for ( var i = 0, len = arr.length; i < len; i++ ) {
 				tmp = arr[i].split('=');
 				obj[tmp[0]] = tmp.length > 1 ? decodeURIComponent(tmp[1]) : '';
@@ -17158,7 +17158,7 @@ if (!String.prototype.trim) {
 			return false;
 		}
 	};
-
+	
 	var _createActiveXHR = function () {
 		try {
 			return new window.ActiveXObject( "Microsoft.XMLHTTP" );
@@ -17251,7 +17251,7 @@ window.easemobIM = window.easemobIM || {};
 
 easemobIM.Transfer = easemobim.Transfer = (function () {
 	'use strict';
-
+   
 	var handleMsg = function ( e, callback, accept ) {
 		// 微信调试工具会传入对象，导致解析出错
 		if('string' !== typeof e.data) return;
@@ -17797,7 +17797,7 @@ easemobim.paste = function (chat) {
 		var success = dom.querySelector('.em-widget-success-prompt');
 
 		utils.on(cancelBtn, utils.click, function () {
-			utils.addClass(dom, 'hide');
+			utils.addClass(dom, 'hide');			   
 		});
 
 		utils.on(confirmBtn, utils.click, function () {
@@ -17834,7 +17834,7 @@ easemobim.paste = function (chat) {
 					status_id: '',
 					priority_id: '',
 					category_id: '',
-					creator: {
+					creator: { 
 						name: contact.value,
 						avatar: '',
 						email: mail.value,
@@ -17861,7 +17861,7 @@ easemobim.paste = function (chat) {
 						chat.errorPrompt('留言失败，请稍后重试');
 					}
 				});
-
+				
 			}
 		});
 
@@ -17885,8 +17885,8 @@ easemobim.paste = function (chat) {
 				}
 			},
 			show: function (isHideCancelBtn) {
-				utils.toggleClass(cancelBtn, 'hide', !!isHideCancelBtn);
-				utils.removeClass(dom, 'hide');
+				utils.toggleClass(cancelBtn, 'hide', !!isHideCancelBtn);			   
+				utils.removeClass(dom, 'hide');			   
 			}
 		};
 	};
@@ -17909,7 +17909,7 @@ easemobim.satisfaction = function ( chat ) {
 	var success = dom.getElementsByTagName('div')[1];
 	var session;
 	var invite;
-
+	
 	utils.on(satisfactionEntry, utils.click, function () {
 		session = null;
 		invite = null;
@@ -17999,7 +17999,7 @@ easemobim.uploadShim = function ( config, chat ) {
 			return;
 		}
 
-		return new SWFUpload({
+		return new SWFUpload({ 
 			file_post_name: 'file'
 			, flash_url: location.protocol + config.staticPath + '/js/swfupload/swfupload.swf'
 			, button_placeholder_id: fileInputId
@@ -18031,7 +18031,7 @@ easemobim.uploadShim = function ( config, chat ) {
 			, upload_error_handler: function ( file, code ) {
 				if (
 					code != SWFUpload.UPLOAD_ERROR.FILE_CANCELLED
-					&& code != SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED
+					&& code != SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED 
 					&& code != SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED
 				){
 					var msg = new WebIM.message('img');
@@ -18160,7 +18160,7 @@ easemobim.uploadShim = function ( config, chat ) {
 
 	site.prototype.get = function ( key ) {
 		if ( this.list.hasOwnProperty(key) ) {
-			return this.list[key];
+			return this.list[key];	
 		} else {
 			return null;
 		}
@@ -18479,15 +18479,15 @@ easemobim.channel = function ( config ) {
 
 			//满意度评价
 			if (utils.getDataByPath(msg, 'ext.weichat.ctrlType') === 'inviteEnquiry') {
-				type = 'satisfactionEvaluation';
+				type = 'satisfactionEvaluation';  
 			}
 			//机器人自定义菜单
 			else if (utils.getDataByPath(msg, 'ext.msgtype.choice')) {
-				type = 'robotList';
+				type = 'robotList';  
 			}
 			//机器人转人工
 			else if (utils.getDataByPath(msg, 'ext.weichat.ctrlType') === 'TransferToKfHint' ) {
-				type = 'robotTransfer';
+				type = 'robotTransfer';  
 			}
 			else {}
 
@@ -18570,7 +18570,7 @@ easemobim.channel = function ( config ) {
 					str = [
 						'<div class="em-widget-list-btns">',
 							'<button class="em-widget-list-btn-white bg-color border-color bg-hover-color-dark js_robotTransferBtn" ',
-							'data-sessionid="' + ctrlArgs.serviceSessionId + '" ',
+							'data-sessionid="' + ctrlArgs.serviceSessionId + '" ', 
 							'data-id="' + ctrlArgs.id + '">' + ctrlArgs.label + '</button>',
 						'</div>'
 					].join('');
@@ -18620,7 +18620,7 @@ easemobim.channel = function ( config ) {
 							}, function ( msg ) {
 								me.sendAttribute(msg);
 							});
-						}
+						}	
 						break;
 					case 'ServiceSessionCreatedEvent':
 						me.handleEventStatus('create');
@@ -18634,7 +18634,7 @@ easemobim.channel = function ( config ) {
 							}, function ( msg ) {
 								me.sendAttribute(msg);
 							});
-						}
+						}	
 						break;
 					default:
 						var agent = utils.getDataByPath(msg, 'ext.weichat.agent');
@@ -18857,7 +18857,7 @@ easemobim.channel = function ( config ) {
 
 		utils.$Remove(document.getElementById(id + '_loading'));
 		utils.$Remove(document.getElementById(id + '_failed'));
-
+		
 		if ( sendMsgSite.get(id) ) {
 			me.handleEventStatus(null, null, sendMsgSite.get(id).value === '转人工' || sendMsgSite.get(id).value === '转人工客服');
 		}
@@ -18880,7 +18880,7 @@ easemobim.channel = function ( config ) {
 	var firstTS = setTimeout(function () {
 		me.handleReady();
 	}, _const.FIRST_CHANNEL_CONNECTION_TIMEOUT);
-
+	
 	// 第二通道收消息轮询
 	config.isInOfficehours && setInterval(function(){
 		api('receiveMsgChannel', {
@@ -18899,7 +18899,7 @@ easemobim.channel = function ( config ) {
 				}
 				catch (e) {}
 			});
-		});
+		});		   
 	}, _const.SECOND_CHANNEL_MESSAGE_RECEIVE_INTERVAL);
 
 	return _obj;
@@ -19037,7 +19037,7 @@ easemobim.videoChat = (function(dialog){
 			}
 			finally {
 				endCall();
-			}
+			}			
 		},
 		'btn-accept-call': function(){
 			closingTimer.isConnected = true;
@@ -20160,8 +20160,12 @@ easemobim.videoChat = (function(dialog){
 					document.querySelector('.em-widgetHeader-back'),
 					utils.click,
 					function(){
-            event.preventDefault();
-						window.history.go(-1);
+						event.preventDefault();
+						if (/MicroMessenger/.test(navigator.userAgent)) {
+							window.history.go(-1);
+						} else {
+							window.location.href = 'https://h5.yit.com';
+						}
 					}
 				);
 
@@ -20785,12 +20789,18 @@ easemobim.videoChat = (function(dialog){
 
 	function initUI(config, callback) {
 		var iframe = document.getElementById('EasemobKefuWebimIframe');
+		var wechat = /MicroMessenger/.test(navigator.userAgent);
 
 		iframe.src = config.domain + '/webim/transfer.html?v=43.13.006';
 		utils.on(iframe, 'load', function() {
 			easemobim.getData = new easemobim.Transfer('EasemobKefuWebimIframe', 'data');
 			callback(config);
 		});
+
+		if (!wechat) {
+			var backBtn = document.getElementByClass('em-widgetHeader-back');
+			alert(backBtn);
+		}
 
 		// em-widgetPopBar
 		utils.toggleClass(

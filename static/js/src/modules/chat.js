@@ -983,7 +983,11 @@
 					utils.click,
 					function(){
 						event.preventDefault();
-						window.history.go(-1);
+						if (/MicroMessenger/.test(navigator.userAgent)) {
+							window.history.go(-1);
+						} else {
+							window.location.href = 'https://h5.yit.com';
+						}
 					}
 				);
 

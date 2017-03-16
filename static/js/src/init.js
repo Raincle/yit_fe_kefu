@@ -132,12 +132,18 @@
 
 	function initUI(config, callback) {
 		var iframe = document.getElementById('EasemobKefuWebimIframe');
+		var wechat = /MicroMessenger/.test(navigator.userAgent);
 
 		iframe.src = config.domain + '/webim/transfer.html?v=<%=WEBIM_PLUGIN_VERSION%>';
 		utils.on(iframe, 'load', function() {
 			easemobim.getData = new easemobim.Transfer('EasemobKefuWebimIframe', 'data');
 			callback(config);
 		});
+
+		if (!wechat) {
+			var backBtn = document.getElementByClass('em-widgetHeader-back');
+			alert(backBtn);
+		}
 
 		// em-widgetPopBar
 		utils.toggleClass(
