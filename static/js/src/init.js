@@ -35,7 +35,7 @@
 			config.hideKeyboard = utils.convertFalse(utils.query('hideKeyboard'));
 
 			config.appKey = utils.convertFalse(decodeURIComponent(utils.query('appKey')));
-			config.domain = '//kefu.easemob.com';
+			config.domain = '//kefu.easemob.com/';
 			config.offDutyWord = decodeURIComponent(utils.query('offDutyWord'));
 			config.language = utils.query('language') || 'zh_CN';
 			config.ticket = utils.query('ticket') === '' ? true : utils.convertFalse(utils.query('ticket')); //true default
