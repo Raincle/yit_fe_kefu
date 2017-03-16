@@ -141,8 +141,9 @@
 		});
 
 		if (!wechat) {
-			var backBtn = document.getElementByClass('em-widgetHeader-back');
-			alert(backBtn);
+			var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
+			backBtn.innerHTML = '进入一条生活馆';
+			backBtn.style.width = '120px';
 		}
 
 		// em-widgetPopBar
