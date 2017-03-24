@@ -20797,7 +20797,7 @@ easemobim.videoChat = (function(dialog){
 			callback(config);
 		});
 
-		if (wechat) {
+		if (!wechat) {
 			var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
 			backBtn.innerHTML = '进入一条生活馆';
 			backBtn.style.width = '120px';

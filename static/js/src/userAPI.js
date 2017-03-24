@@ -13,7 +13,7 @@
 		tenantId: '',
 		to: 'kefuchannelimid_925929',
 		//关联的appkey，appKey: "orgName#appName"
-    appKey: "1170170208178675#kefuchannelapp35461",
+    appKey: encodeURIComponent("1170170208178675#kefuchannelapp35461"),
     //环信IM服务器地址
     xmppServer: "im-api.easemob.com",
     //环信REST服务器地址
