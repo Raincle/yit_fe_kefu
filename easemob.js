@@ -74,7 +74,7 @@
 					for ( var len = targetList.length, i = 0; i < len; i++ ) {
 						if ( targetList[i] == tar || targetList[i] == tar.parentNode ) {
 							fn.apply(targetList[i] == tar ? tar : tar.parentNode, arguments);
-						}   
+						}
 					}
 				}
 			});
@@ -128,7 +128,7 @@
 				fn.apply(this, arguments);
 				me.remove(target, ev, tempFn);
 			};
-			me.on(target, ev, tempFn, isCapture);  
+			me.on(target, ev, tempFn, isCapture);
 		}
 		// 触发事件，对于ie8只支持原生事件，不支持自定义事件
 		, trigger: function(element, eventName){
@@ -353,7 +353,7 @@
 				sIdx = ~src.indexOf('//') ? src.indexOf('//') : 0,
 				domain = src.slice(sIdx, src.indexOf('/', sIdx + 2)),
 				arr = src.slice(idx+1).split('&');
-			
+
 			for ( var i = 0, len = arr.length; i < len; i++ ) {
 				tmp = arr[i].split('=');
 				obj[tmp[0]] = tmp.length > 1 ? decodeURIComponent(tmp[1]) : '';
@@ -499,7 +499,7 @@ window.easemobIM = window.easemobIM || {};
 
 easemobIM.Transfer = easemobim.Transfer = (function () {
 	'use strict';
-   
+
 	var handleMsg = function ( e, callback, accept ) {
 		// 微信调试工具会传入对象，导致解析出错
 		if('string' !== typeof e.data) return;
@@ -710,7 +710,7 @@ easemobim.titleSlide = function () {
 			_height = document.documentElement.clientHeight,
 			_x = _width - e.clientX - me.rect.width + _startPosition.x,
 			_y = _height - e.clientY - me.rect.height + _startPosition.y;
-		
+
 		if ( e.clientX - _startPosition.x <= 0 ) {//left
 			_x = _width - me.rect.width;
 		} else if ( e.clientX + me.rect.width - _startPosition.x >= _width ) {//right
@@ -730,7 +730,7 @@ easemobim.titleSlide = function () {
 			x: _x
 			, y: _y
 		};
-		
+
 		clearTimeout(_st);
 		_st = setTimeout(function () {
 			_moveend.call(me);
@@ -750,7 +750,7 @@ easemobim.titleSlide = function () {
 		this.shadow.style.display = 'none';
 		this.iframe.style.display = 'block';
 	};
-	   
+
 	var resize = function () {
 		var me = this;
 
@@ -763,7 +763,7 @@ easemobim.titleSlide = function () {
 				_height = document.documentElement.clientHeight,
 				_right = Number(me.iframe.style.right.slice(0, -2)),
 				_bottom = Number(me.iframe.style.bottom.slice(0, -2));
-			
+
 			//width
 			if ( _width < me.rect.width ) {
 				me.iframe.style.left = 'auto';
@@ -838,7 +838,7 @@ easemobim.titleSlide = function () {
 				case easemobim.EVENTS.SLIDE.event://title slide
 					easemobim.titleSlide.start();
 					break;
-				case easemobim.EVENTS.RECOVERY.event://title recovery 
+				case easemobim.EVENTS.RECOVERY.event://title recovery
 					easemobim.titleSlide.stop();
 					break;
 				case easemobim.EVENTS.ONMESSAGE.event://onmessage callback
@@ -884,7 +884,7 @@ easemobim.titleSlide = function () {
 			}
 		}, ['main']);
 
-		
+
 		me.ready instanceof Function && me.ready();
 	};
 
@@ -1048,7 +1048,7 @@ easemobim.titleSlide = function () {
 
 		this.iframe.src = this.url;
 		this.ready = callback;
-		
+
 		return this;
 	};
 
@@ -1138,7 +1138,7 @@ easemobim.titleSlide = function () {
 		tenantId: '',
 		to: 'kefuchannelimid_674727',
 		//关联的appkey，appKey: "orgName#appName"
-		appKey: "1170170208178675#kefuchannelapp35461",
+		appKey: encodeURIComponent("1170170208178675#kefuchannelapp35461"),
 		//环信IM服务器地址
 		xmppServer: "im-api.easemob.com",
 		//环信REST服务器地址
