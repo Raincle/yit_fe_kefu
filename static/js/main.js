@@ -20162,7 +20162,11 @@ easemobim.videoChat = (function(dialog){
 					function(){
 						event.preventDefault();
 						if (/MicroMessenger/.test(navigator.userAgent)) {
-							window.history.go(-1);
+							if (history.length <= 1) {
+								window.location.href = 'https://h5.yit.com';
+							} else {
+								window.history.go(-1);
+							}
 						} else {
 							window.location.href = 'https://h5.yit.com';
 						}
@@ -20797,11 +20801,16 @@ easemobim.videoChat = (function(dialog){
 			callback(config);
 		});
 
-		if (!wechat) {
-			var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
-			backBtn.innerHTML = '进入一条生活馆';
-			backBtn.style.width = '120px';
-		}
+		var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
+ 		if (!wechat) {
+ 			backBtn.innerHTML = '进入一条生活馆';
+		} else {
+			if (history.length <= 1) {
+				backBtn.innerHTML = '进入一条生活馆';
+			}
+ 		}
+
+
 
 		// em-widgetPopBar
 		utils.toggleClass(

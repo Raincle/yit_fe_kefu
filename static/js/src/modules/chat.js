@@ -984,7 +984,11 @@
 					function(){
 						event.preventDefault();
 						if (/MicroMessenger/.test(navigator.userAgent)) {
-							window.history.go(-1);
+							if (history.length <= 1) {
+								window.location.href = 'https://h5.yit.com';
+							} else {
+								window.history.go(-1);
+							}
 						} else {
 							window.location.href = 'https://h5.yit.com';
 						}

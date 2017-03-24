@@ -141,3 +141,32 @@
 		cursor: pointer;
 	}
 }
+@media screen and (max-width:330px) {
+  .em-widgetHeader-back {
+    font-size: 12px;
+    width: 90px;
+  }
+	.em-widgetHeader-workTime {
+		font-size: 12px;
+	}
+}
+
+@media (min-width:331px) and (max-width:360px) {
+  .em-widgetHeader-back {
+    font-size: 13px;
+    width: 100px;
+  }
+	.em-widgetHeader-workTime {
+		font-size: 13px;
+	}
+}
+
+@media screen and (min-width:361px) {
+  .em-widgetHeader-back {
+    font-size: 14px;
+    width: 120px;
+  }
+	.em-widgetHeader-workTime {
+		font-size: 14px;
+	}
+}

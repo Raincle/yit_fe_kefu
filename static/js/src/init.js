@@ -140,11 +140,16 @@
 			callback(config);
 		});
 
-		if (!wechat) {
-			var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
-			backBtn.innerHTML = '进入一条生活馆';
-			backBtn.style.width = '120px';
-		}
+		var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
+ 		if (!wechat) {
+ 			backBtn.innerHTML = '进入一条生活馆';
+		} else {
+			if (history.length <= 1) {
+				backBtn.innerHTML = '进入一条生活馆';
+			}
+ 		}
+
+
 
 		// em-widgetPopBar
 		utils.toggleClass(
