@@ -11,7 +11,7 @@
 
 	var DEFAULT_CONFIG = {
 		tenantId: '',
-		to: 'kefuchannelimid_925929',
+		to: 'kefuchannelimid_674727',
 		//关联的appkey，appKey: "orgName#appName"
     appKey: "1170170208178675#kefuchannelapp35461",
     //环信IM服务器地址
