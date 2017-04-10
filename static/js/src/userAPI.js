@@ -150,7 +150,15 @@
 				return;
 			}
 
-			a.setAttribute('href', iframe.url);
+
+			// 处理iframe.url，以获得正确的url
+			var frme_url_arr = iframe.url.split("//");
+			var processed_url = location.protocol + "//" + frme_url_arr[1];
+
+			a.setAttribute('href', processed_url);
+			
+			// 环信原来的链接，多了"http:"导致调转失败，致404
+			// a.setAttribute('href', iframe.url);
 			// a.setAttribute('target', '_blank');
 
 		// }
