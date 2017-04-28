@@ -1280,7 +1280,11 @@ easemobim.titleSlide = function () {
 			var frme_url_arr = iframe.url.split("//");
 			var processed_url = location.protocol + "//" + frme_url_arr[1];
 
-			a.setAttribute('href', processed_url);
+			if (yit.query.isBlank === "true") {
+				location.replace(processed_url);
+			} else {
+				a.setAttribute('href', processed_url);
+			}
 			
 			// 环信原来的链接，多了"http:"导致调转失败，致404
 			// a.setAttribute('href', iframe.url);
