@@ -139,17 +139,19 @@
 			}
 
 
-			var a = window.event.srcElement || window.event.target,
-				counter = 5;
-
-			while( a && a.nodeName !== 'A' && counter-- ) {
-				a = a.parentNode;
-			}
-
-			if ( !a || a.nodeName !== 'A' ) {
-				return;
-			}
-
+			// var a = window.event.srcElement || window.event.target, counter = 5;
+			// var evt = JSON.parse(localStorage.kefuEvent);
+			// var a = evt.srcElement || evt.target, counter = 5;
+			// alert(JSON.stringify(a));
+			// 
+			// while( a && a.nodeName !== 'A' && counter-- ) {
+			// 	a = a.parentNode;
+			// }
+			// 
+			// if ( !a || a.nodeName !== 'A' ) {
+			// 	return;
+			// }
+			
 
 			// 处理iframe.url，以获得正确的url
 			var frme_url_arr = iframe.url.split("//");
@@ -158,7 +160,7 @@
 			if (yit.query.isBlank === "true") {
 				location.replace(processed_url);
 			} else {
-				a.setAttribute('href', processed_url);
+				location.href = processed_url;
 			}
 			
 			// 环信原来的链接，多了"http:"导致调转失败，致404
