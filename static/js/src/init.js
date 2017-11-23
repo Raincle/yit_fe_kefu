@@ -141,13 +141,17 @@
 		});
 
 		var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
- 		if (!wechat) {
- 			backBtn.innerHTML = '进入一条生活馆';
+ 	// 	if (!wechat) {
+ 	// 		backBtn.innerHTML = '进入一条生活馆';
+		// } else {
+		// 	if (history.length <= 1) {
+		// 		backBtn.innerHTML = '进入一条生活馆';
+		// 	}
+ 	// 	}
+		if (document.referrer.indexOf("h5.yit.com") > -1 || document.referrer.indexOf("h5-stage.yit.com") > -1) {
 		} else {
-			if (history.length <= 1) {
-				backBtn.innerHTML = '进入一条生活馆';
-			}
- 		}
+			backBtn.innerHTML = '进入一条生活馆';
+		}
 
 
 
