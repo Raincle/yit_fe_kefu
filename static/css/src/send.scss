@@ -8,7 +8,7 @@
 	// 工具栏按钮
 	i {
 		float: left;
-		top: 5px;
+		top: 7px;
 		left: 5px;
 		position: relative;
 		color: #4d4d4d;
@@ -27,7 +27,7 @@
 	}
 	// 输入框
 	.em-widget-textarea {
-		width: 100%;
+		width: calc(100% - 80px);
 		height: 70px;
 		border: none;
 		padding: 10px;
