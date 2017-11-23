@@ -2,6 +2,14 @@
  * webim交互相关
  */
 ;(function () {
+  
+  var isIOS111 = false;
+  var isIOS = /iPhone/i.test(navigator.userAgent);
+  if (isIOS) {
+    var version = parseFloat(navigator.userAgent.split(" ")[5].replace(/_/g, "."));
+    isIOS111 = version >= 11.1;
+  }
+
 
 	easemobim.chat = function ( config ) {
 		var utils = easemobim.utils;
@@ -932,6 +940,18 @@
 						easemobim.textarea.style.overflowY = 'auto';
 						me.scrollBottom(800);
 						clearInterval(me.focusText);
+            
+            if (isIOS111) {
+              me.focusText = setInterval(function () {
+                easemobim.send.style.paddingBottom = "36px";
+                easemobim.sendBtn.style.bottom = "41px";
+              }, 300);
+            } else {
+              me.focusText = setInterval(function () {
+                document.body.scrollTop = 10000;
+              }, 100);
+            }
+
 						me.focusText = setInterval(function () {
 							document.body.scrollTop = 10000;
 						}, 100);
@@ -940,6 +960,20 @@
 					utils.one(easemobim.textarea, 'touchstart', handleFocus);
 					utils.on(easemobim.textarea, 'blur', function () {
 						clearInterval(me.focusText);
+            
+            if (isIOS111) {
+              easemobim.send.style.paddingBottom = "6px";
+              easemobim.sendBtn.style.bottom = "8px";
+              var height = easemobim.send.getBoundingClientRect().height;
+              if ( me.direction === 'up' ) {
+                easemobim.chatFaceWrapper.style.top = 43 + height + 'px';
+              }
+              else {
+                easemobim.imChatBody.style.bottom = height + 'px';
+                easemobim.chatFaceWrapper.style.bottom = height + 'px';
+              }
+            }
+
 					});
 
 					// 键盘上下切换按钮
