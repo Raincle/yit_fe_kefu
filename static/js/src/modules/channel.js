@@ -105,6 +105,11 @@ easemobim.channel = function ( config ) {
 		sendText: function ( message, isHistory, ext, id ) {
 
 			var msg = new WebIM.message('txt', isHistory ? null : id);
+			// 发送消息时会进入;
+			// console.log("message: ");
+			// console.log(message);
+			// console.log("msg: ");
+			// console.log(msg);
 			msg.set({
 				msg: message,
 				to: config.toUser,
@@ -247,7 +252,7 @@ easemobim.channel = function ( config ) {
 			var str;
 			var message;
 			var ackForMsgId = utils.getDataByPath(msg, 'ext.weichat.ack_for_msg_id');
-
+			
 
 			//如果是ack消息，清除ack对应的site item，返回
 			if (ackForMsgId) {
@@ -285,6 +290,10 @@ easemobim.channel = function ( config ) {
 
 			switch ( type ) {
 				case 'txt':
+					// 接收的历史消息电话可拨打;
+					if (msg.data) {
+						msg.data = _obj.replaceTel(msg.data);
+					}
 				case 'emoji':
 					message = new WebIM.message('txt');
 					message.set({msg: isHistory ? msg.data : me.getSafeTextValue(msg)});
@@ -536,6 +545,20 @@ easemobim.channel = function ( config ) {
 
 			me.conn.listen(handlers);
 		},
+		
+		replaceTel: function(str) {
+			var regx = /\d{8,}/g;
+			var newStr = str;
+			var regxList = str.match(regx);
+			if (regxList) {
+				for (var i = 0; i < regxList.length; i++) {
+					var res = regxList[i];
+					var replaceStr = "<a href='tel:" + res + "'>" + res +"</a>";
+					newStr = str.replace(res, replaceStr);
+				}
+			}
+			return newStr;
+		},
 
 		handleHistory: function ( chatHistory ) {
 			_.each(chatHistory, function(element, index){
@@ -559,6 +582,8 @@ easemobim.channel = function ( config ) {
 							me.sendFileMsg(msg, true);
 							break;
 						case 'txt':
+							// 用户发出的历史消息电话可拨打;
+							msg.msg = _obj.replaceTel(msg.msg);
 							me.sendTextMsg(msg.msg, true);
 							break;
 					}
