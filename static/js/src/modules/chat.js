@@ -280,11 +280,25 @@
 					chatWrapper.setAttribute('data-history', 1);
 				}
 			}
+			, replaceTel: function(str) {
+				var regx = /\d{8,}/g;
+				var newStr = str;
+				var regxList = str.match(regx);
+				if (regxList) {
+					for (var i = 0; i < regxList.length; i++) {
+						var res = regxList[i];
+						var replaceStr = "<a href='tel:" + res + "'>" + res +"</a>";
+						newStr = str.replace(res, replaceStr);
+					}
+				}
+				return newStr;
+			}
 			, getHistory: function ( notScroll ) {
 				var me = this,
 					chatWrapper = me.chatWrapper,
 					groupid = chatWrapper.getAttribute('data-groupid');
-
+					
+				// 历史消息电话号码可拨打;
 				if ( groupid ) {
 					Number(chatWrapper.getAttribute('data-history')) || easemobim.api('getHistory', {
 						fromSeqId: chatWrapper.getAttribute('data-start') || 0
@@ -337,11 +351,11 @@
 					tenantId: config.tenantId
 				}, function ( msg ) {
 					msg && msg.data && me.receiveMsg({
-						data: msg.data,
+						data: me.replaceTel(msg.data),
 						ext: {
 							weichat: {
 								html_safe_body: {
-									msg: msg.data
+									msg: me.replaceTel(msg.data)
 								}
 							}
 						},

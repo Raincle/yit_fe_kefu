@@ -105,6 +105,7 @@ easemobim.channel = function ( config ) {
 		sendText: function ( message, isHistory, ext, id ) {
 
 			var msg = new WebIM.message('txt', isHistory ? null : id);
+			// 发送消息时会进入;
 			msg.set({
 				msg: message,
 				to: config.toUser,
@@ -124,6 +125,10 @@ easemobim.channel = function ( config ) {
 				sendMsgSite.set(id, msg);
 				if ( msg.body.ext && msg.body.ext.type === 'custom' ) { return; }
 				me.appendDate(new Date().getTime(), config.toUser);
+				// 处理发送消息，电话可拨打;
+				var newMessage = _obj.replaceTel(msg.value, true);
+				msg.set({msg: newMessage});
+				
 				me.appendMsg(config.user.username, config.toUser, msg);
 			} else {
 				me.appendMsg(config.user.username, isHistory, msg, true);
@@ -247,7 +252,7 @@ easemobim.channel = function ( config ) {
 			var str;
 			var message;
 			var ackForMsgId = utils.getDataByPath(msg, 'ext.weichat.ack_for_msg_id');
-
+			
 
 			//如果是ack消息，清除ack对应的site item，返回
 			if (ackForMsgId) {
@@ -285,6 +290,10 @@ easemobim.channel = function ( config ) {
 
 			switch ( type ) {
 				case 'txt':
+					// 接收的历史消息电话可拨打;
+					if (msg.data) {
+						msg.data = _obj.replaceTel(msg.data);
+					}
 				case 'emoji':
 					message = new WebIM.message('txt');
 					message.set({msg: isHistory ? msg.data : me.getSafeTextValue(msg)});
@@ -447,6 +456,10 @@ easemobim.channel = function ( config ) {
 				}
 				me.appendDate(new Date().getTime(), msg.from);
 				me.resetSpan();
+				// 接收实时消息可拨打电话;
+				var newMessage = _obj.replaceTel(message.value);
+				message.set({msg: newMessage});
+				
 				me.appendMsg(msg.from, msg.to, message);
 				me.scrollBottom(50);
 
@@ -536,6 +549,24 @@ easemobim.channel = function ( config ) {
 
 			me.conn.listen(handlers);
 		},
+		
+		replaceTel: function(str, isCustomer) {
+			var regx = /\d{8,}/g;
+			var newStr = str;
+			var regxList = str.match(regx);
+			if (regxList) {
+				for (var i = 0; i < regxList.length; i++) {
+					var res = regxList[i];
+					var colorStr = "";
+					if (isCustomer) {
+						colorStr = "style='color:white'";
+					}
+					var replaceStr = "<a " + colorStr + " href='tel:" + res + "'>" + res +"</a>";
+					newStr = str.replace(res, replaceStr);
+				}
+			}
+			return newStr;
+		},
 
 		handleHistory: function ( chatHistory ) {
 			_.each(chatHistory, function(element, index){
@@ -559,6 +590,8 @@ easemobim.channel = function ( config ) {
 							me.sendFileMsg(msg, true);
 							break;
 						case 'txt':
+							// 用户发出的历史消息电话可拨打;
+							msg.msg = _obj.replaceTel(msg.msg, true);
 							me.sendTextMsg(msg.msg, true);
 							break;
 					}
