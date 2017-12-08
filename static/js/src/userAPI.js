@@ -11,13 +11,13 @@
 
 	var DEFAULT_CONFIG = {
 		tenantId: '',
-		// to: 'kefuchannelimid_674727',
+		to: 'kefuchannelimid_674727',
 		//关联的appkey，appKey: "orgName#appName"
-    // appKey: "1170170208178675#kefuchannelapp35461",
+    appKey: "1170170208178675#kefuchannelapp35461",
     //环信IM服务器地址
-    xmppServer: "im-api-vip5.easemob.com",
+    xmppServer: "im-api.easemob.com",
     //环信REST服务器地址
-    restServer: "a1-vip5.easemob.com",
+    restServer: "a1.easemob.com",
 		agentName: '',
 		domain: '',
 		hide: 'true',
