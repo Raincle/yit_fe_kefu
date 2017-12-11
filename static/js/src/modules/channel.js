@@ -551,7 +551,7 @@ easemobim.channel = function ( config ) {
 		},
 		
 		replaceTel: function(str, isCustomer) {
-			var regx = /\d{8,}/g;
+			var regx = /\d{3}-\d{8}|\d{11}/g;
 			var newStr = str;
 			var regxList = str.match(regx);
 			if (regxList) {
@@ -562,7 +562,7 @@ easemobim.channel = function ( config ) {
 						colorStr = "style='color:white'";
 					}
 					var replaceStr = "<a " + colorStr + " href='tel:" + res + "'>" + res +"</a>";
-					newStr = str.replace(res, replaceStr);
+					newStr = newStr.replace(res, replaceStr);
 				}
 			}
 			return newStr;
