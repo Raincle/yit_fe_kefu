@@ -279,6 +279,18 @@
 				} else {
 					chatWrapper.setAttribute('data-history', 1);
 				}
+			}, replaceTel: function(str) {
+				var regx = /\d{3,4}-\d{8}|\d{11,}/g;
+				var newStr = str;
+				var regxList = str.match(regx);
+				if (regxList) {
+					for (var i = 0; i < regxList.length; i++) {
+						var res = regxList[i];
+						var replaceStr = "<a href='tel:" + res + "'>" + res +"</a>";
+						newStr = newStr.replace(res, replaceStr);
+					}
+				}
+				return newStr;
 			}
 			, getHistory: function ( notScroll ) {
 				var me = this,
@@ -337,11 +349,11 @@
 					tenantId: config.tenantId
 				}, function ( msg ) {
 					msg && msg.data && me.receiveMsg({
-						data: msg.data,
+						data: me.replaceTel(msg.data),
 						ext: {
 							weichat: {
 								html_safe_body: {
-									msg: msg.data
+									msg: me.replaceTel(msg.data)
 								}
 							}
 						},
