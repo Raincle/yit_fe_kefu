@@ -281,14 +281,14 @@
 				}
 			}
 			, replaceTel: function(str) {
-				var regx = /\d{8,}/g;
+				var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
 				var newStr = str;
 				var regxList = str.match(regx);
 				if (regxList) {
 					for (var i = 0; i < regxList.length; i++) {
 						var res = regxList[i];
 						var replaceStr = "<a href='tel:" + res + "'>" + res +"</a>";
-						newStr = str.replace(res, replaceStr);
+						newStr = newStr.replace(res, replaceStr);
 					}
 				}
 				return newStr;

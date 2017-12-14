@@ -457,8 +457,11 @@ easemobim.channel = function ( config ) {
 				me.appendDate(new Date().getTime(), msg.from);
 				me.resetSpan();
 				// 接收实时消息可拨打电话;
-				var newMessage = _obj.replaceTel(message.value);
-				message.set({msg: newMessage});
+				if (message.type == 'txt') {
+					var newMessage = _obj.replaceTel(message.value);
+					message.set({msg: newMessage});
+				}
+				
 				
 				me.appendMsg(msg.from, msg.to, message);
 				me.scrollBottom(50);
@@ -551,7 +554,7 @@ easemobim.channel = function ( config ) {
 		},
 		
 		replaceTel: function(str, isCustomer) {
-			var regx = /\d{8,}/g;
+			var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
 			var newStr = str;
 			var regxList = str.match(regx);
 			if (regxList) {
@@ -562,7 +565,7 @@ easemobim.channel = function ( config ) {
 						colorStr = "style='color:white'";
 					}
 					var replaceStr = "<a " + colorStr + " href='tel:" + res + "'>" + res +"</a>";
-					newStr = str.replace(res, replaceStr);
+					newStr = newStr.replace(res, replaceStr);
 				}
 			}
 			return newStr;
