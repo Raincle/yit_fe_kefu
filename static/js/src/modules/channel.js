@@ -550,7 +550,7 @@ easemobim.channel = function ( config ) {
 			me.conn.listen(handlers);
 		},
 		replaceTel: function(str, isCustomer) {
-			var regx = /\d{3,4}-\d{8,}|\d{11,}/g;
+			var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
 			var newStr = str;
 			var regxList = str.match(regx);
 			if (regxList) {
