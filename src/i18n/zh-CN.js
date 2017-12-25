@@ -30,7 +30,7 @@ module.exports = {
 		current_queue_number: "当前排队人数为",
 		connecting: "连接中...",
 		send: "发送",
-		input_placeholder: "点击输入内容...",
+		input_placeholder: "输入新消息",
 		click_to_ticket: "留言",
 		evaluate_agent_title: "请对我的服务做出评价",
 		click_to_evaluate: "立即评价",
