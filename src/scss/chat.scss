@@ -1,0 +1,495 @@
+
+.chat-container {
+	padding: 24px 0 20px;
+	overflow: hidden;
+	position: relative;
+
+	.em-widget-date,
+	.em-widget-event {
+		width: 100%;
+		float: left;
+		margin: 8px 0;
+		text-align: center;
+		color: white;
+		font-size: 12px;
+		> span {
+			background-color: #c9ced3;
+			border-radius: 4px;
+			padding: 1px 3px;
+		}
+	}
+
+
+	.loading-tip{
+		position: absolute;
+		top: 5px;
+		text-align: center;
+		color: #999;
+		width: 100%;	
+		vertical-align: middle;
+		.loading-btn{
+			margin-right: 5px;
+			display: inline-block;
+			transform:translate3d(0,0,0);
+			animation:em-widget-loading-frame 3s linear infinite;
+			&:before {
+				font-size: 16px;
+			}
+		}
+			
+		
+	}
+	.no-more-msg {
+		position: absolute;
+		top: 5px;
+		text-align: center;
+		width: 100%;
+		>span {
+			background-color: #c9ced3;
+			border-radius: 4px;
+			padding: 1px 3px;
+			color: #fff;
+		}
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+		zoom: 1;
+		overflow: hidden;
+	}
+}
+
+.em-widget-left,
+.em-widget-right {
+	float: left;
+	display: block;
+	text-decoration: none;
+	width: 98%;
+	text-align: left;
+	margin: 8px 0;
+}
+
+.em-widget-left {
+	margin-bottom: -22px;
+	> img.avatar {
+		width: 30px;
+		height: 30px;
+		margin-left: 10px;
+		float: left;
+		border-radius: 50%;
+	}
+	.em-widget-msg-wrapper {
+		clear: both;
+		left: 50px;
+		top: -30px;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		.icon-corner-left {
+			position: absolute;
+			top: 5px;
+			left: -17px;
+			width: 30px;
+			height: 30px;
+			color: white;
+			text-shadow: -1px 0 0 #e5e5e5;
+		}
+	}
+}
+
+.em-widget-right {
+	.em-widget-msg-wrapper {
+		float: right;
+		margin-right: 12px;
+		background: #e3ecfc;
+		border: 1px solid #c3cbd9;
+		.icon-corner-right {
+			position: absolute;
+			top: 5px;
+			right: -17px;
+			width: 30px;
+			height: 30px;
+			color: #e3ecfc;
+			text-shadow: 1px 0 0 #c3cbd9;
+		}
+		.em-widget-msg-container {
+			background-color: #e3ecfc;
+			float: right;
+		}
+	}
+}
+
+
+
+
+.em-widget-msg-wrapper {
+	position: relative;
+	float: left;
+	display: inline-block;
+	border-radius: 6px;
+	max-width: 210px;
+	.em-btn-list {
+		min-width: 190px;
+		position: relative;
+		margin: 4px 0;
+		text-align: left;
+		clear: both;
+		border-top: 1px solid #e5e5e5;
+		&:after {
+			content: '';
+			clear: both;
+		}
+		button {
+			font-size: 13px;
+			display: block;
+			width: 95%;
+			padding: 5px;
+			min-height: 30px;
+			text-align: left;
+			color: #000;
+			background-color: white;
+			border-radius: 2px;
+			border: 1px solid #e5e5e5;
+			cursor: pointer;
+			margin: 4px auto;
+			word-break: break-word;
+			white-space: pre-wrap;
+			&:hover {
+				color: white;
+			}
+			&.white {
+				color: #fff;
+			}
+		}
+	}
+	.em-widget-msg-loading {
+		z-index: 1;
+		position: absolute;
+		left: -38px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		width: 40px;
+		height: 40px;
+		overflow: hidden;
+	}
+	// 消息发送失败标志
+	.em-widget-msg-status {
+		position: absolute;
+		width: 86px;
+		height: 30px;
+		line-height: 30px;
+		left: -88px;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		cursor: pointer;
+		>i {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			position: relative;
+			&:before {
+				color: red;
+			}
+			i {
+				position: absolute;
+				top: 0;
+				right: 0;
+				&:before {
+					color: white;
+				}
+			}
+		}
+		span {
+			line-height: 30px;
+			vertical-align: top;
+			display: inline-block;
+			color: #999;
+		}
+	}
+	.em-widget-msg-container {
+		display: inline-block;
+		border-radius: 6px;
+		max-width: 190px;
+		padding: 10px;
+		min-width: 20px;
+		min-height: 20px;
+		vertical-align: middle;
+		text-align: left;
+		font-size: 13px;
+		word-wrap: break-word;
+		white-space : normal;
+		// 图片消息、表情
+		img {
+			border-radius: 2px;
+			max-width: 190px;
+			word-wrap: break-word;
+			vertical-align: middle;
+		}
+		// 坏掉的图片
+		.icon-broken-pic {
+			color: #999;
+		}
+		// 文本消息
+		pre {
+			word-break: break-word;
+			white-space: pre-wrap;
+		}
+		// 文件消息
+		&.em-widget-msg-file {
+			position: relative;
+			padding: 0;
+			max-width: initial;
+			width: 200px;
+			height: 60px;
+			overflow: hidden;
+			.container-icon-attachment {
+				display: inline-block;
+				width: 52px;
+				height: 52px;
+				text-align: center;
+				float: left;
+				background-color: rgb(58, 164, 221);
+				border-radius: 2px;
+				margin: 4px;
+				color: #fff;
+				&:before {
+					font-size: 50px;
+					line-height: 50px;
+				}
+			}
+			.file-info {
+				display: inline-block;
+				overflow: hidden;
+				float: left;
+				width: 80px;
+				margin: 10px;
+				font-family: Arial, Helvetica, sans-serif;
+				p {
+					vertical-align: middle;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					width: 100%;
+					overflow: hidden;
+					&.filename {
+						color: rgb(0, 0, 0);
+						font-size: 14px;
+					}
+					&.filesize {
+						line-height: 20px;
+						color: rgb(165, 165, 165);
+						font-size: 12px;
+					}
+				}
+			}
+			.container-icon-download {
+				color: rgb(165, 165, 165);
+				display: inline-block;
+				text-decoration: none;
+				float: right;
+				text-align: center;
+				cursor: pointer;
+				line-height: 20px;
+				margin-top: 15px;
+				margin-right: 10px;
+				&:before {
+					font-size: 20px;
+				}
+			}
+		}
+		// 菜单消息
+		&.em-widget-msg-list {
+			overflow: hidden;
+			padding: 0;
+			background-color: rgb(251, 251, 251);
+			>p {
+				padding: 10px;
+				background-color: white;
+			}
+		}
+	}
+	.em-widget-msg-html-form{
+		padding: 0px;
+		height: 60px;
+		overflow: hidden;
+		position: relative;
+		.form-url{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
+		.form-content{
+			float: left;
+			max-width: 130px;
+			min-width: 100px;
+			padding: 10px;
+			box-sizing: border-box;
+			span{
+				display: block;
+				line-height: 20px;
+				height: 20px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+		.form-aside{
+			float: right;
+			width: 60px;
+			height: 60px;
+			background-color: #e1ecf9;
+			i:before{
+				font-size: 60px;
+				line-height: 60px;
+				color: #00B1DC;
+			}
+		}
+	}
+
+}
+
+.article-message-wrapper {
+	margin: 8px 0;
+	float: left;
+	width: 100%;
+	.article-item{
+		padding:10px 0;
+		position: relative;
+		.article-link {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
+	}
+	.article-msg-outer {
+		max-width: 360px;
+		margin: 0 auto;
+		padding: 0 10px;
+		box-sizing: border-box;
+		width: 90%;
+		background: #fff;
+		border-radius: 4px;
+		border: solid 1px #BFBFBF;
+		font-size: 12px;
+	}
+	.only-one-article {
+		.body {
+			padding: 10px 0;
+			border-bottom: 1px solid #E9E9E9;
+			.title {
+				font-weight: normal;
+				font-size: 14px;
+				line-height: 24px;
+				height: 24px;
+				overflow: hidden;
+				width: 90%;
+				white-space: nowrap;
+				text-overflow: ellipsis
+			}
+			.create-time {
+				color: #9B9B9B;
+				line-height: 32px;
+			}
+			.cover {
+				width: 100%;
+				margin: 5px 0;
+				img {
+					width: 100%;
+				}
+			}
+			.desc {
+				color: #999;
+				p {
+					overflow: hidden;
+					width: 90%;
+					white-space: nowrap;
+					text-overflow: ellipsis
+				}
+			}
+		}
+		.footer {
+			font-size: 14px;
+			padding: 10px 0;
+			position: relative;
+			i {
+				position: absolute;
+				top: 5px;
+				color: #dcdcdc;
+				right: -10px;
+			}
+		}
+	}
+
+	.more-articles {
+		.first-item {
+			.title {
+				position: absolute;
+				bottom: 10px;
+				height: 30px;
+				line-height: 30px;
+				color: #fff;
+				padding: 0 10px;
+				box-sizing: border-box;
+				font-size: 14px;
+				font-weight: normal;
+				background: rgba(0, 0, 0, 0.5);
+				width: 100%;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			.cover-img {
+				display: block;
+				width: 100%;
+				min-height: 100px;
+			}
+		}
+		.rest-item {
+			// height: 40px;
+			border-top: solid 1px #E9E9E9;
+			.cover-img {
+				display: block;
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				top: 10px;
+				right: 0px;
+			}
+			.title-wrapper {
+				height: 40px;
+				line-height: 50px;
+				.title {
+					display: inline-block;
+					padding-right: 50px;
+					line-height: 20px;
+					max-height: 40px;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+
+}
+
+.em-widget-loading {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	animation: em-widget-loading-frame 1s linear infinite;
+}
+
+@keyframes em-widget-loading-frame {
+	from {
+		transform: rotate(0)
+	}
+	to {
+		transform: rotate(360deg)
+	}
+}

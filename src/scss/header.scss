@@ -1,0 +1,119 @@
+#em-widgetPopBar {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 14px;
+}
+
+.em-widget-pop-bar {
+	display: block;
+	color: white;
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 4px;
+	text-decoration: none;
+	font-size: 13px;
+	i {
+		width: 30px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.em-widget-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #f5f5f5;
+}
+
+
+/*header*/
+
+.em-widget-header {
+	height: 41px;
+	line-height: 41px;
+	// border-top-left-radius: 4px;
+	// border-top-right-radius: 4px;
+	// box-shadow: 0 1px 1px rgba(255, 255, 255, .3) inset;
+	cursor: default;
+	position: relative;
+	padding-left: 10px;
+	color: white;
+	background-color: black;
+
+	.drag-bar {
+		position: absolute;
+		left: 40px;
+		top: 0;
+		right: 80px;
+		width: auto;
+		height: 100%;
+	}
+	.btn-min {
+		position: relative;
+		float: right;
+		margin: 10px;
+		width: 21px;
+		height: 21px;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(255, 255, 255, .3) inset;
+		&:before {
+			position: absolute;
+			left: -5px;
+			top: -4px;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.btn-keyboard {
+		float: right;
+		&:before {
+			text-align: center;
+		}
+	}
+
+	.btn-audio {
+		float: right;
+		&:before {
+			text-align: center;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.status-bar {
+		display: inline-block;
+
+		.session-list-btn {
+			position: relative;
+			display: inline-block;
+			cursor: pointer;
+			width: 30px;
+			height: 30px;
+			.notice {
+				position: absolute;
+				color: red;
+				top: -7px;
+				right: -2px;
+				font-size: 10px;
+				&:before {
+					font-size: 15px;
+				}
+	   		}
+		}
+
+		.em-agent-input-state {
+			margin-left: 5px;
+		}
+
+		.em-header-status-text {
+			color: rgba(255, 255, 255, 0.5);
+		}
+	}
+}
