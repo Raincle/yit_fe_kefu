@@ -84,7 +84,6 @@
 		clear: both;
 		left: 50px;
 		top: -30px;
-		background: #fff;
 		.icon-corner-left {
 			position: absolute;
 			top: 5px;
@@ -116,6 +115,7 @@
 			background-color: #679ed3;
 			float: right;
 			color: white;
+			border: none;
 		}
 	}
 }
@@ -133,7 +133,6 @@
 	min-height: 20px;
 	vertical-align: middle;
 	text-align: left;
-	border: 1px solid #dedede;
 	.em-btn-list {
 		min-width: 190px;
 		position: relative;
@@ -217,7 +216,7 @@
 	}
 	.em-widget-msg-container {
 		display: inline-block;
-		border-radius: 6px;
+		border-radius: 4px;
 		max-width: 190px;
 		padding: 10px;
 		min-width: 20px;
@@ -227,6 +226,8 @@
 		font-size: 13px;
 		word-wrap: break-word;
 		white-space : normal;
+		background-color: white;
+		border: 1px solid #dedede;
 		// 图片消息、表情
 		img {
 			border-radius: 2px;
@@ -307,9 +308,7 @@
 		}
 		// 菜单消息
 		&.em-widget-msg-list {
-			overflow: hidden;
 			padding: 0;
-			background-color: white;
 			margin-bottom: 60px;
 			>p {
 				padding: 10px;
@@ -491,7 +490,7 @@
 	line-height: 80px;
 	text-align: center;
 	overflow: hidden;
-	left: calc(50vw - 12px);
+	left: calc(50vw - 50px);
 	transform: translate(-50%, 0);
 	width: 125px;
 	height: 30px;
