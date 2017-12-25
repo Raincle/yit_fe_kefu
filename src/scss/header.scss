@@ -44,6 +44,47 @@
 	color: black;
 	background-color: white;
 
+	.em-widget-header-nickname {
+		position: absolute;
+		top: 44px;
+		left: 36px;
+		margin-left: 10px;
+		padding-right: 8px;
+		color: black;
+		background-color: #f5f5f5;
+		z-index: 9;
+	}
+	.em-widgetHeader-seperator {
+		position: absolute;
+		width: 90%;
+		height: 1px;
+		background: rgb(237,237,237);
+		top: 64px;
+		right: 8px;
+		z-index: 1;
+	}
+
+	.em-widgetHeader-workTime {
+		padding: 0 10px;
+		color: black;
+	}
+	.em-widgetHeader-back {
+		position: absolute;
+		right: 9px;
+		top: 8px;
+		width: 80px;
+		height: 24px;
+		border-radius: 4px;
+		border: 1px solid black;
+		text-align: center;
+		line-height: 24px;
+		color: black;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
 	.drag-bar {
 		position: absolute;
 		left: 40px;
@@ -115,5 +156,35 @@
 		.em-header-status-text {
 			color: rgba(255, 255, 255, 0.5);
 		}
+	}
+}
+
+@media screen and (max-width:330px) {
+  .em-widgetHeader-back {
+    font-size: 12px;
+    width: 90px;
+  }
+	.em-widgetHeader-workTime,.em-widget-header-nickname {
+		font-size: 12px;
+	}
+}
+
+@media (min-width:331px) and (max-width:360px) {
+  .em-widgetHeader-back {
+    font-size: 13px;
+    width: 100px;
+  }
+	.em-widgetHeader-workTime,.em-widget-header-nickname {
+		font-size: 13px;
+	}
+}
+
+@media screen and (min-width:361px) {
+  .em-widgetHeader-back {
+    font-size: 14px;
+    width: 120px;
+  }
+	.em-widgetHeader-workTime,.em-widget-header-nickname {
+		font-size: 14px;
 	}
 }
