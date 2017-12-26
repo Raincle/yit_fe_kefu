@@ -474,6 +474,24 @@ function _bindEvents(){
 			_scrollToBottom();
 		});
 	}
+	
+	// 返回上一页
+	utils.on(
+		document.querySelector(".em-widgetHeader-back"),
+		utils.click,
+		function(){
+			event.preventDefault();
+			if (/MicroMessenger/.test(navigator.userAgent)) {
+				if (history.length <= 1) {
+					window.location.href = 'https://h5.yit.com';
+				} else {
+					window.history.go(-1);
+				}
+			} else {
+				window.location.href = 'https://h5.yit.com';
+			}
+		}
+	);
 
 	// 发送文件
 	utils.on(doms.fileInput, "change", function(){
