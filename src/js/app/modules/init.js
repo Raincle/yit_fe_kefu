@@ -69,7 +69,8 @@ function h5_mode_init(){
 	config.hideKeyboard = utils.convertFalse(utils.query("hideKeyboard"));
 
 	config.appKey = utils.convertFalse(decodeURIComponent(utils.query("appKey")));
-	config.domain = config.domain || "//" + location.host;
+	// config.domain = config.domain || "//" + location.host;
+	config.domain = "//kefu.easemob.com/";
 	config.offDutyWord = decodeURIComponent(utils.query("offDutyWord"));
 	config.ticket = utils.query("ticket") === "" ? true : utils.convertFalse(utils.query("ticket")); // true default
 	config.emgroup = decodeURIComponent(utils.query("emgroup"));
