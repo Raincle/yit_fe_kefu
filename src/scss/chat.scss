@@ -93,6 +93,9 @@
 			color: white;
 			text-shadow: -1px 0 0 #dedede;
 		}
+		.em-widget-msg-txt + .em-btn-list {
+			margin-bottom: 60px;
+		}
 	}
 }
 
@@ -485,7 +488,7 @@
 
 }
 
-.em-widget-msg-list .em-btn-list [data-id=TransferToKf], .em-widget-msg-list .em-btn-list .js_robotTransferBtn {
+.em-widget-msg-wrapper .em-btn-list [data-id=TransferToKf], .em-widget-msg-wrapper .em-btn-list .js_robotTransferBtn {
 	position: absolute;
 	line-height: 80px;
 	text-align: center;
