@@ -307,6 +307,13 @@ function initCrossOriginIframe(){
 		apiHelper.initApiTransfer();
 		handleMsgData();
 	});
+	
+	var backBtn = document.getElementsByClassName('em-widgetHeader-back')[0];
+
+	if (document.referrer.indexOf("h5.yit.com") > -1 || document.referrer.indexOf("h5-stage.yit.com") > -1) {
+	} else {
+		backBtn.innerHTML = '进入一条生活馆';
+	}
 }
 
 
