@@ -160,7 +160,7 @@
 }
 
 @media screen and (max-width:330px) {
-  .em-widgetHeader-back {
+  .status-bar .em-widgetHeader-back {
     font-size: 12px;
     width: 90px;
   }
@@ -170,7 +170,7 @@
 }
 
 @media (min-width:331px) and (max-width:360px) {
-  .em-widgetHeader-back {
+  .status-bar .em-widgetHeader-back {
     font-size: 13px;
     width: 100px;
   }
@@ -180,7 +180,7 @@
 }
 
 @media screen and (min-width:361px) {
-  .em-widgetHeader-back {
+  .status-bar .em-widgetHeader-back {
     font-size: 14px;
     width: 120px;
   }
