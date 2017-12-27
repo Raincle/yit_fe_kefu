@@ -9,16 +9,36 @@ module.exports = {
 	getTextMessageBrief: getTextMessageBrief,
 };
 
+function hasTel(str) {
+	var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
+	if (str) {
+		var regxList = str.match(regx);
+		if (regxList) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
+	
+}
+
 // 从消息通道来的消息需要 _unescape
 function _unescape(str){
 	if(typeof str !== "string") return "";
+	
+	if (hasTel(str)) {
+		return str;
+	} else {
+		return str
+		.replace(/&amp;/g, "&")
+		.replace(/&#39;/g, "'")
+		.replace(/&quot;/g, "\"")
+		.replace(/&lt;/g, "<")
+		.replace(/&gt;/g, ">");
+	}
 
-	return str
-	.replace(/&amp;/g, "&")
-	.replace(/&#39;/g, "'")
-	.replace(/&quot;/g, "\"")
-	.replace(/&lt;/g, "<")
-	.replace(/&gt;/g, ">");
 }
 
 function getTextMessageBrief(text){
@@ -29,10 +49,16 @@ function getTextMessageBrief(text){
 
 		switch(type){
 		case "ENCODED_TEXT":
-			return value
-			.replace(/&lt;/g, "<")
-			.replace(/&gt;/g, ">")
-			.replace(/\n/mg, " ");
+		
+			if (hasTel(value)) {
+				return value;
+			} else {
+				return value
+				.replace(/&lt;/g, "<")
+				.replace(/&gt;/g, ">")
+				.replace(/\n/mg, " ");
+			}
+			
 		case "LINK":
 		case "CUSTOM_LINK":
 			return __("message_brief.link");
@@ -64,8 +90,13 @@ function parse(text){
 
 function _encodeParser(text){
 	var newStr = text
-	.replace(/</g, "&lt;")
-	.replace(/>/g, "&gt;");
+	if (hasTel(text)) {
+		
+	} else {
+		newStr = text
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+	}
 
 	return {
 		type: "ENCODED_TEXT",

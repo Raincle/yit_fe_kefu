@@ -75,6 +75,16 @@ module.exports = function(opt){
 	}
 
 	function _appendMsg(msg, options){
+		console.log("in append");
+		console.log(msg);
+		console.log(msg.data);
+		if (hasTel(msg.data)) {
+			var newValue = replaceTel(msg.data);
+			msg.value = newValue;
+			msg.data = newValue;
+			msg.brief = newValue;
+		}
+		console.log(msg);
 		var opt = options || {};
 		var isReceived = opt.isReceived;
 		var isHistory = opt.isHistory;
@@ -196,5 +206,34 @@ module.exports = function(opt){
 
 	function _show(){
 		utils.removeClass(el, "hide");
+	}
+	
+	function replaceTel(str) {
+		var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
+		var newStr = str;
+		var regxList = str.match(regx);
+		if (regxList) {
+			for (var i = 0; i < regxList.length; i++) {
+				var res = regxList[i];
+				var replaceStr = "<a href='tel:" + res + "'>" + res + "</a>";
+				newStr = newStr.replace(res, replaceStr);
+			}
+		}
+		return newStr;
+	}
+
+	function hasTel(str) {
+		var regx = /\d{3,4}-\d{6,}|\d{11,}/g;
+		if (str) {
+			var regxList = str.match(regx);
+			if (regxList) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		
 	}
 };
