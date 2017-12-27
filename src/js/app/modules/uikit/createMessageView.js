@@ -75,16 +75,12 @@ module.exports = function(opt){
 	}
 
 	function _appendMsg(msg, options){
-		console.log("in append");
-		console.log(msg);
-		console.log(msg.data);
 		if (hasTel(msg.data)) {
 			var newValue = replaceTel(msg.data);
 			msg.value = newValue;
 			msg.data = newValue;
 			msg.brief = newValue;
 		}
-		console.log(msg);
 		var opt = options || {};
 		var isReceived = opt.isReceived;
 		var isHistory = opt.isHistory;
