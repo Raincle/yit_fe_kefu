@@ -10,7 +10,7 @@ var satisfaction = require("./satisfaction");
 var imgView = require("./imgview");
 var leaveMessage = require("./leaveMessage");
 var initPasteImage = require("./paste");
-var videoChat = require("./videoChat");
+// var videoChat = require("./videoChat");
 
 var initAgentInputStatePoller = require("./chat/initAgentInputStatePoller");
 var initAgentStatusPoller = require("./chat/initAgentStatusPoller");
@@ -693,7 +693,7 @@ function _getDom(){
 		satisfaction: editorView.querySelector(".em-widget-satisfaction"),
 		textInput: editorView.querySelector(".em-widget-textarea"),
 		noteBtn: editorView.querySelector(".em-widget-note"),
-		videoInviteButton: editorView.querySelector(".em-video-invite"),
+		// videoInviteButton: editorView.querySelector(".em-video-invite"),
 		queuingNumberStatus: editorView.querySelector(".queuing-number-status"),
 
 		imgInput: document.querySelector(".upload-img-container"),
@@ -740,10 +740,10 @@ function _initSession(){
 				textInput: doms.textInput,
 			});
 
-			videoChat.init({
-				triggerButton: doms.videoInviteButton,
-				parentContainer: doms.imChat,
-			});
+			// videoChat.init({
+			// 	triggerButton: doms.videoInviteButton,
+			// 	parentContainer: doms.imChat,
+			// });
 
 			Promise.all([
 				_initOfficialAccount(),
