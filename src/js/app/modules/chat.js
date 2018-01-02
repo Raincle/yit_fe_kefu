@@ -38,11 +38,11 @@ if (isIOS) {
 	isIOS111 = version >= 11.0;
 }
 
-setInterval(function() {
+document.addEventListener('visibilitychange', function() {
 	if (document.visibilityState == "hidden" && !isFirstFocus) {
 		isFirstFocus = true;
 	}
-}, 100);
+})
 
 var _reCreateImUser = _.once(function(){
 	console.warn("user not found in current appKey, attempt to recreate user.");
