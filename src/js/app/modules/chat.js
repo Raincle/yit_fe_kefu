@@ -37,7 +37,6 @@ if (isIOS) {
 	var version = parseFloat(navigator.userAgent.split(" ")[5].replace(/_/g, "."));
 	isIOS111 = version >= 11.0;
 }
-
 document.addEventListener('visibilitychange', function() {
 	if (document.visibilityState == "hidden" && !isFirstFocus) {
 		isFirstFocus = true;
