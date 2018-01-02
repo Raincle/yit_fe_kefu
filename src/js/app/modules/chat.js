@@ -29,6 +29,21 @@ var topBar;
 var editorView;
 var doms;
 
+var isIOS111 = false;
+var isFirstFocus = true;
+var isAfterSendFocus = false;
+var isIOS = /iPhone/i.test(navigator.userAgent);
+if (isIOS) {
+	var version = parseFloat(navigator.userAgent.split(" ")[5].replace(/_/g, "."));
+	isIOS111 = version >= 11.0;
+}
+
+setInterval(function() {
+	if (document.visibilityState == "hidden" && !isFirstFocus) {
+		isFirstFocus = true;
+	}
+}, 100);
+
 var _reCreateImUser = _.once(function(){
 	console.warn("user not found in current appKey, attempt to recreate user.");
 	apiHelper.createVisitor().then(function(entity){
@@ -561,19 +576,26 @@ function _bindEvents(){
 	});
 
 	// ios patch: scroll page when keyboard is visible ones
-	if(utils.isIOS){
+	if(isIOS111){
 		utils.on(doms.textInput, "focus", function(){
+			if (isFirstFocus || isAfterSendFocus) {
+				isFirstFocus = false;
+				isAfterSendFocus = false;
+				setTimeout(function(){
+					doms.editorView.style.paddingBottom = "75px";
+					doms.sendBtn.style.bottom = "80px";
+					// document.body.scrollTop = 9999;
+					// transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
+				}, 100);
+			}
+		});
+		utils.on(doms.textInput, "blur", function(){
 			setTimeout(function(){
-				if(
-					document.activeElement === doms.textInput
-					&& inputBoxPosition !== "up"
-					// ios 11.1/11.2/11.3 给scrollTop赋值，会使scrollTop值为0
-					&& !/(OS 11_1|OS 11_2|OS 11_3)/i.test(navigator.userAgent)
-				){
-					document.body.scrollTop = 9999;
-					transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
-				}
-			}, 500);
+				doms.editorView.style.paddingBottom = "3px";
+				doms.sendBtn.style.bottom = "8px";
+				document.body.scrollTop = 9999;
+				transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
+			}, 100);
 		});
 	}
 
@@ -595,6 +617,9 @@ function _bindEvents(){
 
 
 	utils.on(doms.sendBtn, "click", function(){
+		setTimeout(function(){
+			isAfterSendFocus = true;
+		},300);
 		var textMsg = doms.textInput.value;
 
 		if(utils.hasClass(this, "disabled")){
