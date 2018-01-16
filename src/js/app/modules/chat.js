@@ -353,6 +353,9 @@ function _bindEvents(){
 	utils.on(doms.chatWrapper, "click", function(){
 		doms.textInput.blur();
 	});
+	utils.on(doms.chatWrapper, "touchstart", function(){
+		doms.textInput.blur();
+	});
 
 	utils.live("img.em-widget-imgview", "click", function(){
 		var imgSrc = this.getAttribute("src");
