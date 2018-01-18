@@ -33,6 +33,7 @@ var isIOS111 = false;
 var isFirstFocus = true;
 var isAfterSendFocus = false;
 var isIOS = /iPhone/i.test(navigator.userAgent);
+var isIPX = /iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375);
 if (isIOS) {
 	var version = parseFloat(navigator.userAgent.split(" ")[5].replace(/_/g, "."));
 	isIOS111 = version >= 11.0;
