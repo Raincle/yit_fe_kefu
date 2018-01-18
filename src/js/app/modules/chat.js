@@ -584,7 +584,7 @@ function _bindEvents(){
 	});
 
 	// ios patch: scroll page when keyboard is visible ones
-	if(isIOS111){
+	if(isIOS){
 		utils.on(doms.textInput, "focus", function(){
 			if (isFirstFocus || isAfterSendFocus) {
 				isFirstFocus = false;
