@@ -587,21 +587,25 @@ function _bindEvents(){
 				setTimeout(function(){
 					doms.editorView.style.paddingBottom = "75px";
 					doms.sendBtn.style.bottom = "80px";
-					document.body.scrollTop = 9999;
-					transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
+					// document.body.scrollTop = 9999;
+					// transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
 				}, 100);
 			}
 		});
 		utils.on(doms.textInput, "blur", function(){
 			setTimeout(function(){
-				doms.editorView.style.paddingBottom = "3px";
-				doms.sendBtn.style.bottom = "8px";
-				document.body.scrollTop = 9999;
-				transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
+				if (isIPX) {
+					doms.editorView.style.paddingBottom = "34px";
+					doms.sendBtn.style.bottom = "38px";
+				} else {
+					doms.editorView.style.paddingBottom = "3px";
+					doms.sendBtn.style.bottom = "8px";
+				}
+				// document.body.scrollTop = 9999;
+				// transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
 				
 				var height = doms.editorView.getBoundingClientRect().height;
 				doms.chatWrapper.style.bottom = height + "px";
-				_scrollToBottom();
 			}, 100);
 		});
 	}
@@ -735,6 +739,13 @@ function _getDom(){
 		topBar: topBar,
 		editorView: editorView,
 	};
+	if (isIPX) {
+		doms.editorView.style.paddingBottom = "34px";
+		doms.sendBtn.style.bottom = "38px";
+	} else {
+		doms.editorView.style.paddingBottom = "3px";
+		doms.sendBtn.style.bottom = "8px";
+	}
 }
 
 function _init(){
