@@ -582,7 +582,7 @@ function _bindEvents(){
 	});
 
 	// ios patch: scroll page when keyboard is visible ones
-	if(isIOS111){
+	if(isIOS){
 		utils.on(doms.textInput, "focus", function(){
 			if (isFirstFocus || isAfterSendFocus) {
 				isFirstFocus = false;
@@ -608,6 +608,7 @@ function _bindEvents(){
 				// transfer.send({ event: _const.EVENTS.SCROLL_TO_BOTTOM });
 				
 				var height = doms.editorView.getBoundingClientRect().height;
+				document.querySelector(".emoji-panel").style.bottom = height + "px";
 				doms.chatWrapper.style.bottom = height + "px";
 			}, 100);
 		});
