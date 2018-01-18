@@ -467,6 +467,9 @@ function _bindEvents(){
 	}, 1000);
 
 	function handleSendBtn(){
+		setTimeout(function(){
+			isAfterSendFocus = true;
+		},300);
 		var isEmpty = !doms.textInput.value.trim();
 
 		utils.toggleClass(
