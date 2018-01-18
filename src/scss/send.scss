@@ -82,9 +82,3 @@
 		left: -9999px;
 	}
 }
-
-@media only screen and (device-width: 375px) and (device-height: 812px) and 
-(-webkit-device-pixel-ratio: 3) {
-  .em-widget-send-wrapper{height:auto;padding-bottom:34px !important;background:#fff;}
-  .em-widget-send {bottom:38px !important;}
-}
