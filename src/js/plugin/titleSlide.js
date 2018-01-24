@@ -6,18 +6,18 @@ var word;
 
 module.exports = {
 	stop: function(){
-		clearInterval(titleST);
-		titleST = 0;
-		document.title = originTitle;
+		// clearInterval(titleST);
+		// titleST = 0;
+		// document.title = originTitle;
 	},
 	start: function(){
-		if(titleST){
-			return;
-		}
-		titleST = setInterval(function(){
-			word = tempArr.shift();
-			document.title = word + Array.prototype.join.call(tempArr, "");
-			tempArr.push(word);
-		}, 360);
+		// if(titleST){
+		// 	return;
+		// }
+		// titleST = setInterval(function(){
+		// 	word = tempArr.shift();
+		// 	document.title = word + Array.prototype.join.call(tempArr, "");
+		// 	tempArr.push(word);
+		// }, 360);
 	}
 };
