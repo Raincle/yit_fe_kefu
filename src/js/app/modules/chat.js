@@ -788,7 +788,7 @@ function _initSession(){
 		// 当配置为下班进会话时执行与上班相同的逻辑
 		profile.isInOfficeHours = dutyStatus || config.offDutyType === "chat";
 
-		// if(profile.isInOfficeHours){
+		if(profile.isInOfficeHours){
 			emojiPanel.init({
 				container: doms.imChat,
 				toggleButton: doms.emojiToggleButton,
@@ -840,11 +840,13 @@ function _initSession(){
 
 			// 移动端输入框自动增长
 			utils.isMobile && _initAutoGrow();
-		// }
-		// else{
-		// 	// 设置下班时间展示的页面
-		// 	_setOffline();
-		// }
+		}else{
+			// 设置下班时间展示的页面
+			// 	_setOffline();
+			// 下班不显示排队
+			let queueDom = document.querySelector(".queuing-number-status");
+			queueDom.style.display = "none";
+		}
 	}, function(err){
 		if(
 			err.error_description === "user not found"
