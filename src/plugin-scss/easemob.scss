@@ -6,7 +6,7 @@
 	margin: 0 !important;
 }
 .easemobim-mobile-body {
-	position: fixed !important;
+	position: absolute !important;
 	top: 0 !important;
 	right: 0 !important;
 	bottom: 0 !important;
@@ -28,7 +28,7 @@
 .easemobim-chat-panel {
 	z-index: 16777269;
 	overflow: hidden;
-	position: fixed;
+	position: absolute;
 	bottom: 10px;
 	right: -5px;
 	border: none;
