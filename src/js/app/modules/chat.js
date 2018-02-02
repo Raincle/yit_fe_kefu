@@ -847,6 +847,9 @@ function _initSession(){
 			let queueDom = document.querySelector(".queuing-number-status");
 			queueDom.style.display = "none";
 		}
+		// 任何时间都不显示排队人数
+		let queueDom = document.querySelector(".queuing-number-status");
+		queueDom.style.display = "none";
 	}, function(err){
 		if(
 			err.error_description === "user not found"
