@@ -82,3 +82,14 @@
 		left: -9999px;
 	}
 }
+
+@media screen and (max-width:330px) {
+	.em-widget-send::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -50px;
+		width: 100px;
+		height: 50px;
+	}
+}
