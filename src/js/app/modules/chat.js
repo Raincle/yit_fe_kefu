@@ -39,6 +39,10 @@ if (isIOS) {
 	isIOS111 = version >= 11.0;
 }
 
+// 本地没有加载yit.js
+if (window.yit) {
+	console.log(yit.local("userToken"));
+}
 
 document.addEventListener('visibilitychange', function() {
 	if (document.visibilityState == "hidden" && !isFirstFocus) {

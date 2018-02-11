@@ -1,4 +1,17 @@
-
+.vip-tip {
+	width: 287px;
+	height: 20px;
+	border-radius: 2px;
+	background-color: #cca663;
+	margin: 0 auto;
+	margin-top: 16px;
+}
+.vip-tip p {
+	text-align: center;
+	color: white;
+	font-size: 13px;
+	line-height: 20px;
+}
 .chat-container {
 	padding: 24px 0 20px;
 	overflow: hidden;
