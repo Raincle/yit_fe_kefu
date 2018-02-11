@@ -39,18 +39,16 @@ if (isIOS) {
 	isIOS111 = version >= 11.0;
 }
 
-// 本地没有加载yit.js
-if (window.yit) {
-	console.log(yit.local("userToken"));
-}
-
+// vip用户提示
 function insertVipTip() {
 	var chatWrapper = document.querySelector(".chat-container");
 	var vipTip = '<div class="vip-tip"><p>尊敬的VIP会员，您的客服请求将得到优先响应</p></div>';
 	chatWrapper.innerHTML = chatWrapper.innerHTML + vipTip;
 }
 
-yit.local("userToken")
+if (localStorage.yitiao_vipState) {
+	insertVipTip();
+}
 
 document.addEventListener('visibilitychange', function() {
 	if (document.visibilityState == "hidden" && !isFirstFocus) {
