@@ -23,7 +23,12 @@ function _getGreetings(officialAccount){
 		var greetingTextType = robotGreetingObj.greetingTextType;
 		var greetingText = robotGreetingObj.greetingText;
 		var greetingObj = {};
-		
+
+		// 系统欢迎语
+		systemGreetingText && channel.handleMessage({
+			data: systemGreetingText,
+		}, { type: "txt", noPrompt: true });
+
 		// vip用户提示
 		function insertVipTip() {
 			var chatWrapper = document.querySelector(".chat-container");
@@ -34,12 +39,8 @@ function _getGreetings(officialAccount){
 		if (localStorage.yitiao_vipState) {
 			insertVipTip();
 		}
-
-		// 系统欢迎语
-		systemGreetingText && channel.handleMessage({
-			data: systemGreetingText,
-		}, { type: "txt", noPrompt: true });
-
+		
+		
 		// 机器人欢迎语
 		switch(greetingTextType){
 		case 0:
