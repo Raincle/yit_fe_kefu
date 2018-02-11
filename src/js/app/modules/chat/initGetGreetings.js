@@ -32,8 +32,10 @@ function _getGreetings(officialAccount){
 		// vip用户提示
 		function insertVipTip() {
 			var chatWrapper = document.querySelector(".chat-container");
+			var dateList = chatWrapper.querySelectorAll(".em-widget-date");
+			var domToInsert = dateList[dateList.length - 1]
 			var vipTip = '<div class="vip-tip"><p>尊敬的VIP会员，您的客服请求将得到优先响应</p></div>';
-			chatWrapper.innerHTML = chatWrapper.innerHTML + vipTip;
+			domToInsert.innerHTML = domToInsert.innerHTML + vipTip;
 		}
 
 		if (localStorage.yitiao_vipState) {
