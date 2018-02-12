@@ -737,6 +737,17 @@ function _handleSystemEvent(event, eventObj, msg){
 		officialAccount.hasReportedAttributes = false;
 
 		transfer.send({ event: _const.EVENTS.ONSESSIONCLOSED });
+		
+		// 会话结束
+		setTimeout(function() {
+			var chatWrapper = document.querySelector(".chat-container");
+			if (chatWrapper != null) {
+				var evaluation = '<div class="evaluation"><p>评价本次服务</p></div>';
+				chatWrapper.innerHTML = chatWrapper.innerHTML + evaluation;
+			}
+		}, 100);
+
+		
 		break;
 	case _const.SYSTEM_EVENT.SESSION_OPENED:
 		officialAccount.sessionState = _const.SESSION_STATE.PROCESSING;
@@ -948,4 +959,3 @@ function _messagePrompt(message, officialAccount){
 		});
 	}
 }
-
