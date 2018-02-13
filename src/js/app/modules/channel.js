@@ -9,6 +9,7 @@ var eventListener = require("./tools/eventListener");
 var textParser = require("./tools/textParser");
 var apiHelper = require("./apiHelper");
 var moment = require("moment");
+var satisfaction = require("./satisfaction");
 
 var isNoAgentOnlineTipShowed;
 var receiveMsgTimer;
@@ -740,10 +741,21 @@ function _handleSystemEvent(event, eventObj, msg){
 		
 		// 会话结束
 		setTimeout(function() {
-			var chatWrapper = document.querySelector(".chat-container");
-			if (chatWrapper != null) {
-				var evaluation = '<div class="evaluation"><p>评价本次服务</p></div>';
-				chatWrapper.innerHTML = chatWrapper.innerHTML + evaluation;
+			var chatContainer = document.querySelector(".chat-container");
+			var chatWrapper = document.querySelector(".chat-wrapper");
+			if (chatContainer != null) {
+				var evaluation = '<div class="evaluation"><p class="btn">评价本次服务</p><p>为了更好的为您服务，提升服务质量，欢迎评价本次服务。</p></div>';
+				chatContainer.innerHTML = chatContainer.innerHTML + evaluation;
+				// 滑动到底部
+				chatWrapper.scrollTop = 9999;
+				
+				// 点击事件
+				var evaluateBtn = document.querySelector(".evaluation .btn");
+				evaluateBtn.onclick = function() {
+					var serviceSessionId = this.getAttribute("data-servicesessionid");
+					var inviteId = this.getAttribute("data-inviteid");
+					satisfaction.show(inviteId, serviceSessionId);
+				}
 			}
 		}, 100);
 
