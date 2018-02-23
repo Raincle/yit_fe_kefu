@@ -752,9 +752,7 @@ function _handleSystemEvent(event, eventObj, msg){
 				// 点击事件
 				var evaluateBtn = document.querySelector(".evaluation .btn");
 				evaluateBtn.onclick = function() {
-					var serviceSessionId = this.getAttribute("data-servicesessionid");
-					var inviteId = this.getAttribute("data-inviteid");
-					satisfaction.show(inviteId, serviceSessionId);
+					satisfaction.show("", "");
 				}
 			}
 		}, 100);
