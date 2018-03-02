@@ -9,7 +9,6 @@ var eventListener = require("./tools/eventListener");
 var textParser = require("./tools/textParser");
 var apiHelper = require("./apiHelper");
 var moment = require("moment");
-var satisfaction = require("./satisfaction");
 
 var isNoAgentOnlineTipShowed;
 var receiveMsgTimer;
@@ -739,7 +738,7 @@ function _handleSystemEvent(event, eventObj, msg){
 
 		transfer.send({ event: _const.EVENTS.ONSESSIONCLOSED });
 		
-		// 会话结束
+		// 会话结束，评价客服
 		setTimeout(function() {
 			var chatContainer = document.querySelector(".chat-container");
 			var chatWrapper = document.querySelector(".chat-wrapper");
@@ -748,12 +747,6 @@ function _handleSystemEvent(event, eventObj, msg){
 				chatContainer.innerHTML = chatContainer.innerHTML + evaluation;
 				// 滑动到底部
 				chatWrapper.scrollTop = 9999;
-				
-				// 点击事件
-				var evaluateBtn = document.querySelector(".evaluation .btn");
-				evaluateBtn.onclick = function() {
-					satisfaction.show("", "");
-				}
 			}
 		}, 100);
 
@@ -936,7 +929,7 @@ function _detectSendTextMsgByApi(id){
 			_sendMsgChannle(id);
 		}, _const.FIRST_CHANNEL_MESSAGE_TIMEOUT)
 	);
-}
+}``
 
 // 监听ack，超时则开启api通道, 上传图片消息时调用
 function _detectUploadImgMsgByApi(id, file){

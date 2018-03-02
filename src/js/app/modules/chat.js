@@ -43,7 +43,18 @@ document.addEventListener('visibilitychange', function() {
 	if (document.visibilityState == "hidden" && !isFirstFocus) {
 		isFirstFocus = true;
 	}
-})
+});
+
+// 轮询页面是否有评价按钮
+var satisfactionInterval = setInterval(function() {
+	var evaluateBtn = document.querySelector(".evaluation .btn");
+	if (evaluateBtn) {
+		clearInterval(satisfactionInterval);
+		evaluateBtn.onclick = function() {
+			satisfaction.show("", "");
+		}
+	}
+}, 500);
 
 var _reCreateImUser = _.once(function(){
 	console.warn("user not found in current appKey, attempt to recreate user.");
