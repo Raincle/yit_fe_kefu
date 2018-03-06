@@ -66,7 +66,7 @@ module.exports = {
 		review: "请输入评价内容",
 		select_level_please: "请先选择星级",
 		select_tag_please: "请先选择标签",
-		submit_success: "提交成功",
+		submit_success: "评价成功",
 	},
 	ticket: {
 		title: "请填写以下内容以方便我们及时联系您",

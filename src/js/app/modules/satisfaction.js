@@ -193,7 +193,13 @@ function _confirm(){
 	}
 
 	_sendSatisfaction(score, content, session, invite, appraiseTags, evaluationDegreeId);
-	uikit.showSuccess(__("evaluation.submit_success"));
+	// 评价成功
+	uikit.tip(__("evaluation.submit_success"));
+	// 处理评价按钮
+	document.querySelector(".evaluation .btn").style.backgroundColor = "#dedede";
+	document.querySelector(".evaluation .btn").onclick = null;
+	document.querySelector(".evaluation p")[1].innerText = "感谢您的评价！";
+	
 	_clear();
 }
 
