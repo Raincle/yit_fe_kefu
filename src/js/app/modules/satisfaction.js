@@ -27,12 +27,21 @@ module.exports = {
 };
 
 function _init(){
+	//添加头像
+	var avatars = document.querySelectorAll(".chat-container .em-widget-left img");
+	var lastAvatarSrc = avatars[avatars.length - 1].src;
+	var name = document.querySelector(".em-widget-header-nickname").innerText;
+	
+	
 	loading.show("satisfaction");
 	apiHelper.getSatisfactionTipWord().then(function(tipWord){
 		dom = utils.createElementFromHTML([
 			"<div class=\"wrapper\">",
+			"<img class=\"avatar\" src=\"" + lastAvatarSrc + "\"></img>",
+			"<p class=\"name\">" + name + "</p>",
 			"<span class=\"title\">" + tipWord + "</span>",
 			"<ul></ul>",
+			"<p class=\"desc\">评价描述</p>",
 			"<div class=\"tag-container\"></div>",
 			"<textarea spellcheck=\"false\" placeholder=\"" + __("evaluation.review") + "\"></textarea>",
 			"</div>"
@@ -40,12 +49,34 @@ function _init(){
 		starsUl = dom.querySelector("ul");
 		commentDom = dom.querySelector("textarea");
 		tagContainer = dom.querySelector(".tag-container");
+		
+		var desc = document.querySelector(".satisfaction .desc");
 
 		utils.live("li", "click", function(){
 			var level = +this.getAttribute("data-level");
 
 			evaluationDegreeId = this.getAttribute("data-evaluate-id");
 			score = this.getAttribute("data-score");
+			
+			switch(score){
+			case "1":
+				desc.innerText = "非常不满意";
+				break;
+			case "2":
+				desc.innerText = "不满意";
+				break;
+			case "3":
+				desc.innerText = "一般";
+				break;
+			case "4":
+				desc.innerText = "满意";
+				break;
+			case "5":
+				desc.innerText = "非常满意";
+				break;
+			default:
+				break;
+			}
 
 			level && _.each(starList, function(elem, i){
 				utils.toggleClass(elem, "sel", i < level);

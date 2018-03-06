@@ -135,18 +135,42 @@
 	// 满意度评价
 	&.satisfaction {
 		font-size: 13px;
+		background-color: #f9f9f9;
 		.wrapper {
 			width: 95%;
 			max-width: 400px;
 			margin: auto;
+			.avatar{
+				display: block;
+				width: 80px;
+				height: 80px;
+				border-radius: 80px;
+				overflow: hidden;
+				margin: 0 auto;
+				margin-top: 40px;
+			}
+			.name, .desc {
+				width: 100%;
+				font-size: 12px;
+				margin: 0 auto;
+				margin-top: 15px;
+				text-align: center;
+				color: #333;
+			}
+			.desc {
+				color: #666;
+			}
 			.title{
 				font-size: 14px;
-				display: inline-block;
+				display: block;
 				margin-top: 15px;
+				text-align: center;
+				color: #333;
 			}
 			ul {
 				width: 100%;
 				margin: 15px 0;
+				margin-bottom: 0;
 				text-align: center;
 				li {
 					// fake: IE8 满意度评价会有兼容问题，修改图标需替换字符
@@ -163,7 +187,7 @@
 					height: 80px\9;
 					zoom: 50%\9;
 					&.sel {
-						color: #ffb31a;
+						color: #85bfc3;
 					}
 				}
 			}
@@ -193,19 +217,23 @@
 		}
 		textarea {
 			resize: none;
-			width: 100%;
+			width: 95%;
 			padding: 6px;
 			box-sizing: border-box;
-			height: 120px;
-			margin: 15px 0;
+			height: 200px;
+			margin: 0 auto;
+			margin-top: 30px;
 			display: block;
-			border: 1px solid #E4E4E4;
-			border-radius: 6px;
+			border: 1px solid #ededed;
+			border-radius: 4px;
 		}
 		.footer{
 			max-width: 400px;
 			height: 30px;
 			padding: 0 15px;
+			.confirm-btn {
+				background-color: #85bfc3;
+			}
 		}
 	}
 	// 留言
@@ -598,4 +626,10 @@
     top: 40px;
     bottom: 0;
     z-index: 999;
+}
+
+@media screen and (max-width:330px) {
+	.em-dialog.satisfaction textarea {
+		height: 150px;
+	}
 }
