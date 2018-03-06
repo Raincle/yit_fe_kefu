@@ -198,7 +198,7 @@ function _confirm(){
 	// 处理评价按钮
 	document.querySelector(".evaluation .btn").style.backgroundColor = "#dedede";
 	document.querySelector(".evaluation .btn").onclick = null;
-	document.querySelector(".evaluation p")[1].innerText = "感谢您的评价！";
+	document.querySelectorAll(".evaluation p")[1].innerText = "感谢您的评价！";
 	
 	_clear();
 }
