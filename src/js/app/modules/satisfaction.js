@@ -43,7 +43,7 @@ function _init(){
 			"<ul></ul>",
 			"<p class=\"desc\" style=\"opacity:0\">非常满意</p>",
 			"<div class=\"tag-container\"></div>",
-			"<textarea spellcheck=\"false\" placeholder=\"" + __("evaluation.review") + "\"></textarea>",
+			"<textarea spellcheck=\"false\" placeholder=\"请输入您的评价，最多500字。\"></textarea>",
 			"</div>"
 		].join(""));
 		starsUl = dom.querySelector("ul");
@@ -58,6 +58,8 @@ function _init(){
 			score = this.getAttribute("data-score");
 			var desc = document.querySelector(".satisfaction .desc");
 			desc.style.opacity = 1;
+			var confirm = document.querySelector(".satisfaction .footer .confirm-btn");
+			confirm.style.backgroundColor = "#85bfc3";
 			switch(score){
 			case "1":
 				desc.innerText = "非常不满意";
