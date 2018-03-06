@@ -41,7 +41,7 @@ function _init(){
 			"<p class=\"name\">" + name + "</p>",
 			"<span class=\"title\">" + tipWord + "</span>",
 			"<ul></ul>",
-			"<p class=\"desc\">评价描述</p>",
+			"<p class=\"desc\" style=\"opacity:0\">非常满意</p>",
 			"<div class=\"tag-container\"></div>",
 			"<textarea spellcheck=\"false\" placeholder=\"" + __("evaluation.review") + "\"></textarea>",
 			"</div>"
@@ -50,14 +50,14 @@ function _init(){
 		commentDom = dom.querySelector("textarea");
 		tagContainer = dom.querySelector(".tag-container");
 		
-		var desc = document.querySelector(".satisfaction .desc");
 
 		utils.live("li", "click", function(){
 			var level = +this.getAttribute("data-level");
 
 			evaluationDegreeId = this.getAttribute("data-evaluate-id");
 			score = this.getAttribute("data-score");
-			
+			var desc = document.querySelector(".satisfaction .desc");
+			desc.style.opacity = 1;
 			switch(score){
 			case "1":
 				desc.innerText = "非常不满意";
