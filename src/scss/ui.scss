@@ -189,6 +189,16 @@
 					&.sel {
 						color: #85bfc3;
 					}
+					path {
+						stroke: #ccc;
+						stroke-width: 2;
+						fill: none;
+					}
+					&.sel svg path {
+						stroke: none;
+						stroke-width: 0;
+						fill: #85bfc3;
+					}
 				}
 			}
 			.tag-container{
