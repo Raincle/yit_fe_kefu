@@ -28,17 +28,17 @@ module.exports = {
 
 function _init(){
 	//添加头像
-	var avatars = document.querySelectorAll(".chat-container .em-widget-left img");
-	var lastAvatarSrc = avatars[avatars.length - 1].src;
-	var name = document.querySelector(".em-widget-header-nickname").innerText;
+	// var avatars = document.querySelectorAll(".chat-container .em-widget-left img");
+	// var lastAvatarSrc = avatars[avatars.length - 1].src;
+	// var name = document.querySelector(".em-widget-header-nickname").innerText;
 	
 	
 	loading.show("satisfaction");
 	apiHelper.getSatisfactionTipWord().then(function(tipWord){
 		dom = utils.createElementFromHTML([
 			"<div class=\"wrapper\">",
-			"<img class=\"avatar\" src=\"" + lastAvatarSrc + "\"></img>",
-			"<p class=\"name\">" + name + "</p>",
+			// "<img class=\"avatar\" src=\"" + lastAvatarSrc + "\"></img>",
+			// "<p class=\"name\">" + name + "</p>",
 			"<span class=\"title\">" + tipWord + "</span>",
 			"<ul></ul>",
 			"<p class=\"desc\" style=\"opacity:0\">非常满意</p>",

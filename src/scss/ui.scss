@@ -163,7 +163,7 @@
 			.title{
 				font-size: 14px;
 				display: block;
-				margin-top: 15px;
+				margin-top: 100px;
 				text-align: center;
 				color: #333;
 			}
@@ -216,22 +216,29 @@
 			}
 		}
 		textarea {
+			position: absolute;
+			left: 5%;
+			bottom: 84px;
 			resize: none;
-			width: 95%;
+			width: 90%;
 			padding: 6px;
 			box-sizing: border-box;
 			height: 200px;
 			margin: 0 auto;
-			margin-top: 30px;
+			margin-top: 100px;
 			display: block;
 			border: 1px solid #ededed;
 			border-radius: 4px;
 			font-size: 14px;
 		}
 		.footer{
+			position: absolute;
+			left: 0;
+			bottom: 0;
 			max-width: 400px;
-			height: 30px;
+			height: 44px;
 			padding: 0 15px;
+			margin: 10px 0;
 			.confirm-btn {
 				background-color: #ededed;
 			}
