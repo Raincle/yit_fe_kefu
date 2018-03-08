@@ -51,7 +51,12 @@ var satisfactionInterval = setInterval(function() {
 	if (evaluateBtn) {
 		clearInterval(satisfactionInterval);
 		evaluateBtn.onclick = function() {
-			satisfaction.show("", "");
+			var serviceSessionId = evaluateBtn.getAttribute("data-servicesessionid");
+			var inviteId = evaluateBtn.getAttribute("data-inviteid");
+			console.log(inviteId);
+			console.log(serviceSessionId);
+			satisfaction.show(inviteId, serviceSessionId);
+			document.title = "满意度调查";
 		}
 	}
 }, 500);

@@ -112,6 +112,7 @@ function _clear(){
 	utils.removeClass(starList, "sel");
 	// clear label
 	tagContainer.innerHTML = "";
+	document.title = "一条在线客服";
 }
 
 function _sendSatisfaction(score, content, session, invite, appraiseTags, evaluationDegreeId){

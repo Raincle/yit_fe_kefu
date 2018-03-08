@@ -411,24 +411,35 @@ function _handleMessage(msg, options){
 	case "satisfactionEvaluation":
 		inviteId = msg.ext.weichat.ctrlArgs.inviteId;
 		serviceSessionId = msg.ext.weichat.ctrlArgs.serviceSessionId;
-
-		message = msg;
-		message.type = "list";
-		message.data = __("chat.evaluate_agent_title");
-		message.list = [
-			"<div class=\"em-btn-list\">"
-			+ "<button class=\"bg-hover-color js_satisfybtn\" data-inviteid=\""
-			+ inviteId
-			+ "\" data-servicesessionid=\""
-			+ serviceSessionId
-			+ "\">" + __("chat.click_to_evaluate") + "</button></div>"
-		];
-		message.brief = __("message_brief.menu");
-
-		!isHistory && eventListener.excuteCallbacks(
-			_const.SYSTEM_EVENT.SATISFACTION_EVALUATION_MESSAGE_RECEIVED,
-			[targetOfficialAccount, inviteId, serviceSessionId]
-		);
+		
+		if (!isHistory) {
+			var chatContainer = document.querySelector(".chat-container");
+			var chatWrapper = document.querySelector(".chat-wrapper");
+			if (chatContainer != null) {
+				var evaluation = '<div class="evaluation"><p class="btn" data-inviteid="' + inviteId + '" data-servicesessionid="' + serviceSessionId + '">评价本次服务</p><p>为了更好的为您服务，提升服务质量，欢迎评价本次服务。</p></div>';
+				chatContainer.innerHTML = chatContainer.innerHTML + evaluation;
+				// 滑动到底部
+				chatWrapper.scrollTop = 9999;
+			}
+		}
+		
+		// message = msg;
+		// message.type = "list";
+		// message.data = __("chat.evaluate_agent_title");
+		// message.list = [
+		// 	"<div class=\"em-btn-list\">"
+		// 	+ "<button class=\"bg-hover-color js_satisfybtn\" data-inviteid=\""
+		// 	+ inviteId
+		// 	+ "\" data-servicesessionid=\""
+		// 	+ serviceSessionId
+		// 	+ "\">" + __("chat.click_to_evaluate") + "</button></div>"
+		// ];
+		// message.brief = __("message_brief.menu");
+    // 
+		// !isHistory && eventListener.excuteCallbacks(
+		// 	_const.SYSTEM_EVENT.SATISFACTION_EVALUATION_MESSAGE_RECEIVED,
+		// 	[targetOfficialAccount, inviteId, serviceSessionId]
+		// );
 		break;
 	case "article":
 		message = msg;
@@ -739,16 +750,16 @@ function _handleSystemEvent(event, eventObj, msg){
 		transfer.send({ event: _const.EVENTS.ONSESSIONCLOSED });
 		
 		// 会话结束，评价客服
-		setTimeout(function() {
-			var chatContainer = document.querySelector(".chat-container");
-			var chatWrapper = document.querySelector(".chat-wrapper");
-			if (chatContainer != null) {
-				var evaluation = '<div class="evaluation"><p class="btn">评价本次服务</p><p>为了更好的为您服务，提升服务质量，欢迎评价本次服务。</p></div>';
-				chatContainer.innerHTML = chatContainer.innerHTML + evaluation;
-				// 滑动到底部
-				chatWrapper.scrollTop = 9999;
-			}
-		}, 100);
+		// setTimeout(function() {
+		// 	var chatContainer = document.querySelector(".chat-container");
+		// 	var chatWrapper = document.querySelector(".chat-wrapper");
+		// 	if (chatContainer != null) {
+		// 		var evaluation = '<div class="evaluation"><p class="btn">评价本次服务</p><p>为了更好的为您服务，提升服务质量，欢迎评价本次服务。</p></div>';
+		// 		chatContainer.innerHTML = chatContainer.innerHTML + evaluation;
+		// 		// 滑动到底部
+		// 		chatWrapper.scrollTop = 9999;
+		// 	}
+		// }, 100);
 
 		
 		break;
