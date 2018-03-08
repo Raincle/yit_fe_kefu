@@ -55,6 +55,16 @@ var satisfactionInterval = setInterval(function() {
 			var inviteId = evaluateBtn.getAttribute("data-inviteid");
 			satisfaction.show(inviteId, serviceSessionId);
 			document.title = "满意度调查";
+			
+			// 默认五星
+			setTimeout(function(){
+				var starsLI = document.querySelectorAll(".satisfaction ul li");
+				for (var i = 0; i < starsLI.length; i++) {
+					if (parseInt(starsLI[i].getAttribute("data-score")) == 5) {
+						starsLI[i].click();
+					}
+				}
+			},300);
 		}
 	}
 }, 500);
