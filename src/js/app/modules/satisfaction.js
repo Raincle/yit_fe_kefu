@@ -211,6 +211,7 @@ function _confirm(){
 	uikit.tip(__("evaluation.submit_success"));
 	// 处理评价按钮
 	document.querySelector(".evaluation .btn").style.backgroundColor = "#dedede";
+	document.querySelector(".evaluation .btn").innerText = "已评价";
 	document.querySelector(".evaluation .btn").onclick = null;
 	document.querySelectorAll(".evaluation p")[1].innerText = "感谢您的评价！";
 	
