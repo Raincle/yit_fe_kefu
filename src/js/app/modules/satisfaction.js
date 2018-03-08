@@ -43,7 +43,7 @@ function _init(){
 			"<ul></ul>",
 			"<p class=\"desc\" style=\"opacity:0\">非常满意</p>",
 			"<div class=\"tag-container\"></div>",
-			"<textarea spellcheck=\"false\" placeholder=\"请输入您的评价，最多500字。\"></textarea>",
+			"<textarea spellcheck=\"false\" placeholder=\"请输入您的评价，最多500字。\" maxlength=500></textarea>",
 			"</div>"
 		].join(""));
 		starsUl = dom.querySelector("ul");
