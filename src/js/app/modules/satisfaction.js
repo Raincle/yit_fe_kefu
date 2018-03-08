@@ -87,7 +87,17 @@ function _init(){
 
 			evaluationDegreeId && _createLabel(evaluationDegreeId);
 		}, starsUl);
+		
+		setTimeout(function(){
+			var starsLI = document.querySelectorAll(".satisfaction ul li");
+			for (var i = 0; i < starsLI.length; i++) {
+				if (parseInt(starsLI[i].getAttribute("data-score")) == 5) {
+					starsLI[i].click();
+				}
+			}
+		},300);
 
+		
 		utils.live("span.tag", "click", function(){
 			utils.toggleClass(this, "selected");
 		}, tagContainer);
